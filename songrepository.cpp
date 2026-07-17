@@ -163,18 +163,23 @@ vector<Song> SongRepository::getByPlaylist(int playlistId) const
     return result;
 }
 
-vector<Song> SongRepository::getByLikedSongs(int listenerId) const
+vector<Song>  SongRepository::getByLikedSongs(int listenerId) const
 {
     vector<Song> result;
 
-    const auto likedSongs =m_data.likedSongIdsByListener.find(listenerId);
+    const auto favoritePlaylist = find_if(m_data.playlists.begin(),m_data.playlists.end(),
+        [listenerId](const Playlist& playlist)
+        {
+            return playlist.getListenerId() == listenerId && playlist.getName() == "Favorite Songs";
+        }
+        );
 
-    if (likedSongs == m_data.likedSongIdsByListener.end())
+    if (favoritePlaylist == m_data.playlists.end())
     {
         return result;
     }
 
-    for (int songId : likedSongs->second)
+    for (int songId : favoritePlaylist->getSongIds())
     {
         const auto song = search(songId);
 

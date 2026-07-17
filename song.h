@@ -1,6 +1,6 @@
 #ifndef SONG_H
 #define SONG_H
-#pragma once
+
 #include <string>
 using namespace std;
 

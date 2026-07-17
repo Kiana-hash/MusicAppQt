@@ -1,10 +1,21 @@
-#ifndef ARTISTREPOSITORY_H
-#define ARTISTREPOSITORY_H
+#ifndef ARTIST_REPOSITORY_H
+#define ARTIST_REPOSITORY_H
 
-class ArtistRepository
+#include "accountrepository.h"
+
+
+class ArtistRepository : public AccountRepository
 {
 public:
-    ArtistRepository();
+    explicit ArtistRepository(RepositoryData& data);
+
+    int save(const Account& account) override;
+    bool remove(int id) override;
+    optional<Account> search(int id) const override;
+
+    optional<Account> searchByUserName(const string& username) const override;
+
+    const vector<Account>& getAll() const;
 };
 
-#endif // ARTISTREPOSITORY_H
+#endif // ARTIST_REPOSITORY_H

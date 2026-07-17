@@ -61,7 +61,6 @@ bool ListenerRepository::remove(int id)
     }
 
     m_data.listeners.erase(position);
-    m_data.likedSongIdsByListener.erase(id);
     return true;
 }
 
@@ -103,12 +102,12 @@ optional<Account> ListenerRepository::searchByUserName(const string& username) c
 
 bool ListenerRepository::updateLiked(int listenerId,int songId,bool liked)
 {
-    if (!search(listenerId).has_value() || songId <= 0)
+    if (!search(listenerId).has_value())
     {
         return false;
     }
 
-    auto song = find_if(m_data.songs.begin(),m_data.songs.end(),
+    const auto song = find_if(m_data.songs.begin(),m_data.songs.end(),
         [songId](const Song& currentSong)
         {
             return currentSong.getId() == songId;
@@ -120,53 +119,71 @@ bool ListenerRepository::updateLiked(int listenerId,int songId,bool liked)
         return false;
     }
 
-    vector<int>& likedSongIds =m_data.likedSongIdsByListener[listenerId];
-
-    const auto position = find(likedSongIds.begin(),likedSongIds.end(),songId);
-
-    if (liked)
-    {
-        if (position == likedSongIds.end())
+    const auto favoritePlaylist = find_if(m_data.playlists.begin(),m_data.playlists.end(),
+        [listenerId](const Playlist& playlist)
         {
-            likedSongIds.push_back(songId);
+            return playlist.getListenerId() == listenerId && playlist.getName() == "Favorite Songs";
         }
+        );
 
-        return true;
-    }
-
-    if (position != likedSongIds.end())
-    {
-        likedSongIds.erase(position);
-    }
-
-    return true;
-}
-
-bool ListenerRepository::isLiked(int listenerId, int songId) const
-{
-    const auto listenerLikes =m_data.likedSongIdsByListener.find(listenerId);
-
-    if (listenerLikes == m_data.likedSongIdsByListener.end())
+    if (favoritePlaylist == m_data.playlists.end())
     {
         return false;
     }
 
-    const vector<int>& likedSongIds = listenerLikes->second;
+    if (liked)
+    {
+        if (favoritePlaylist->containsSong(songId))
+        {
+            return true;
+        }
 
-    return find(likedSongIds.begin(),likedSongIds.end(),songId ) != likedSongIds.end();
+        return favoritePlaylist->addSong(songId);
+    }
+
+    if (!favoritePlaylist->containsSong(songId))
+    {
+        return true;
+    }
+
+    return favoritePlaylist->removeSong(songId);
+}
+
+bool ListenerRepository::isLiked(int listenerId,int songId) const
+{
+    const auto favoritePlaylist = find_if(m_data.playlists.begin(), m_data.playlists.end(),
+        [listenerId](const Playlist& playlist)
+        {
+            return playlist.getListenerId() == listenerId && playlist.getName() == "Favorite Songs";
+        }
+        );
+
+    if (favoritePlaylist == m_data.playlists.end())
+    {
+        return false;
+    }
+
+    return favoritePlaylist->containsSong(songId);
 }
 
 const vector<int>& ListenerRepository::getLikedSongIds(int listenerId) const
 {
-    const auto result =m_data.likedSongIdsByListener.find(listenerId);
+    const auto favoritePlaylist = find_if(
+        m_data.playlists.begin(),
+        m_data.playlists.end(),
+        [listenerId](const Playlist& playlist)
+        {
+            return playlist.getListenerId() == listenerId && playlist.getName() == "Favorite Songs";
+        }
+        );
 
-    if (result == m_data.likedSongIdsByListener.end())
+    if (favoritePlaylist == m_data.playlists.end())
     {
         static const vector<int> emptyLikedSongs;
         return emptyLikedSongs;
     }
 
-    return result->second;
+    return favoritePlaylist->getSongIds();
 }
 
 const vector<Account>& ListenerRepository::getAll() const

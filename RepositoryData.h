@@ -1,4 +1,4 @@
-#ifndef REPOSITORY_DATA_H
+ #ifndef REPOSITORY_DATA_H
 #define REPOSITORY_DATA_H
 
 #include "account.h"
@@ -6,7 +6,6 @@
 #include "playlist.h"
 #include "song.h"
 
-#include <unordered_map>
 #include <vector>
 
 struct RepositoryData
@@ -17,7 +16,6 @@ struct RepositoryData
     vector<Song> songs;
     vector<Playlist> playlists;
 
-    unordered_map<int, vector<int>> likedSongIdsByListener;
 };
 
 #endif // REPOSITORY_DATA_H
