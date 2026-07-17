@@ -23,6 +23,7 @@ public:
 
     void setName(const string& name);
     void setCoverPath(const string& coverPath);
+    void setId(int id);
 
     bool isValid() const;
 

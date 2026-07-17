@@ -49,6 +49,11 @@ void Album::setCoverPath(const string& coverPath)
     m_coverPath = coverPath;
 }
 
+void Album::setId(int id)
+{
+    m_id = id;
+}
+
 bool Album::isValid() const
 {
     return m_id > 0 && !m_name.empty() && m_artistId > 0;
