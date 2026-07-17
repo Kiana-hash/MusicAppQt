@@ -99,6 +99,11 @@ void Song::setCoverPath(const string& coverPath)
     m_coverPath = coverPath;
 }
 
+void Song::setId(int id)
+{
+    m_id = id;
+}
+
 bool Song::isSingle() const
 {
     return m_albumId == 0;

@@ -35,6 +35,7 @@ public:
     void setAlbumId(int albumId);
     void setAudioFilePath(const string& audioFilePath);
     void setCoverPath(const string& coverPath);
+    void setId(int id);
 
     bool isSingle() const;
     bool isValid() const;
