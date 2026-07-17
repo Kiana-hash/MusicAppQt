@@ -27,6 +27,7 @@ public:
     const string& getPasswordHash() const;
     const string& getProfilePhotoPath() const;
 
+    void setId(int id);
 
     bool hasValidRole() const;
     bool isValid() const;

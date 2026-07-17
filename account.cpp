@@ -56,6 +56,12 @@ const string& Account::getProfilePhotoPath() const
     return m_profilePhotoPath;
 }
 
+void Account::setId(int id)
+{
+    m_id = id;
+}
+
+
 bool Account::hasValidRole() const
 {
     return m_role == "artist" || m_role == "listener";
