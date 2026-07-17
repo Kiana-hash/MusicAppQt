@@ -39,6 +39,11 @@ void Playlist::setName(const string& name)
     m_name = name;
 }
 
+void Playlist::setId(int id)
+{
+    m_id = id;
+}
+
 bool Playlist::containsSong(int songId) const
 {
     for (int currentSongId : m_songIds)

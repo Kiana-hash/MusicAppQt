@@ -18,6 +18,7 @@ qt_add_executable(spotifymahroom
     AbstractRepository.h
     songrepository.h songrepository.cpp
     RepositoryData.h
+    playlistrepository.h playlistrepository.cpp
 
 )
 

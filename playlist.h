@@ -19,6 +19,7 @@ public:
     const vector<int>& getSongIds() const;
 
     void setName(const string& name);
+    void setId(int id);
 
     bool addSong(int songId);
     bool removeSong(int songId);
