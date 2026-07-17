@@ -15,6 +15,10 @@ qt_add_executable(spotifymahroom
     album.h album.cpp
     song.h song.cpp
     playlist.h playlist.cpp
+    AbstractRepository.h
+    songrepository.h songrepository.cpp
+    RepositoryData.h
+
 )
 
 target_link_libraries(spotifymahroom

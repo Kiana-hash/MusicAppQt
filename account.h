@@ -1,6 +1,6 @@
 #ifndef ACCOUNT_H
 #define ACCOUNT_H
-#pragma once
+
 #include <string>
 using namespace std;
 
@@ -27,7 +27,7 @@ public:
     const string& getPasswordHash() const;
     const string& getProfilePhotoPath() const;
 
-    // Helper functions
+
     bool hasValidRole() const;
     bool isValid() const;
     bool isArtist() const;
