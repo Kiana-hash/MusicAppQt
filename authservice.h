@@ -9,7 +9,7 @@
 
 struct AuthResult
 {
-    bool success;
+    bool success{false};
     string message;
     optional<Account> account;
 };

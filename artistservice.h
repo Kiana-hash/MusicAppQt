@@ -9,9 +9,9 @@
 
 struct ArtistActionResult
 {
-    bool success;
+    bool success{false};
     string message;
-    int id;
+    int id{-1};
 };
 
 class ArtistService
@@ -52,6 +52,17 @@ public:
         const string& coverPath
         );
 
+    bool updateSong(
+        int artistId,
+        int songId,
+        const string& name,
+        int releaseYear,
+        const string& genre,
+        int albumId,
+        const string& audioFilePath,
+        const string& coverPath
+        );
+
     bool deleteAlbum(int artistId,int albumId);
 
     bool deleteSong(int artistId,int songId);
@@ -68,7 +79,7 @@ private:
 
     bool artistExists(int artistId) const;
 
-    bool removeSongFromAllPlaylists(int songId);
+    void removeSongFromAllPlaylists(int songId);
 };
 
 #endif
