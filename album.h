@@ -1,6 +1,6 @@
 #ifndef ALBUM_H
 #define ALBUM_H
-#pragma once
+
 #include <string>
 using namespace std;
 

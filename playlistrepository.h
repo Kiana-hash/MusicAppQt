@@ -20,6 +20,7 @@ public:
     bool insertSong(int playlistId, int songId);
     bool removeSong(int playlistId, int songId);
     vector<Playlist> playlists(int listenerId) const;
+    const vector<Playlist>& getAll() const;
 
 private:
     int generateNextId() const;

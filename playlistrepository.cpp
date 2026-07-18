@@ -89,6 +89,11 @@ optional<Playlist> PlaylistRepository::search(int id) const
     return *result;
 }
 
+const vector<Playlist>& PlaylistRepository::getAll() const
+{
+    return m_data.playlists;
+}
+
 bool PlaylistRepository::insertSong(int playlistId, int songId)
 {
     const auto songExists = find_if(m_data.songs.begin(),m_data.songs.end(),
@@ -149,3 +154,5 @@ vector<Playlist> PlaylistRepository::playlists(int listenerId) const
 
     return result;
 }
+
+
