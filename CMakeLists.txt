@@ -23,6 +23,7 @@ qt_add_executable(spotifymahroom
     accountrepository.h accountrepository.cpp
     artistrepository.h artistrepository.cpp
     listenerrepository.h listenerrepository.cpp
+    authservice.h authservice.cpp
 
 )
 

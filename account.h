@@ -14,7 +14,7 @@ public:
         const string& username,
         const string& biography,
         const string& role,
-        const string& passwordHash,
+        const string& password,
         const string& profilePhotoPath = ""
         );
 
@@ -24,7 +24,7 @@ public:
     const string& getUsername() const;
     const string& getBiography() const;
     const string& getRole() const;
-    const string& getPasswordHash() const;
+    const string& getPassword() const;
     const string& getProfilePhotoPath() const;
 
     void setId(int id);
@@ -40,7 +40,7 @@ private:
     string m_username;
     string m_biography;
     string m_role;
-    string m_passwordHash;
+    string m_password;
     string m_profilePhotoPath;
 };
 

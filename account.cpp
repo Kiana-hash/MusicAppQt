@@ -8,7 +8,7 @@ Account::Account(
     const string& username,
     const string& biography,
     const string& role,
-    const string& passwordHash,
+    const string& password,
     const string& profilePhotoPath
     )
 {
@@ -17,7 +17,7 @@ Account::Account(
     m_username = username;
     m_biography = biography;
     m_role = role;
-    m_passwordHash = passwordHash;
+    m_password = password;
     m_profilePhotoPath = profilePhotoPath;
 }
 
@@ -46,9 +46,9 @@ const string& Account::getRole() const
     return m_role;
 }
 
-const string& Account::getPasswordHash() const
+const string& Account::getPassword() const
 {
-    return m_passwordHash;
+    return m_password;
 }
 
 const string& Account::getProfilePhotoPath() const
@@ -72,7 +72,7 @@ bool Account::isValid() const
     return m_id > 0
            && !m_fullName.empty()
            && !m_username.empty()
-           && !m_passwordHash.empty()
+           && !m_password.empty()
            && hasValidRole();
 }
 
