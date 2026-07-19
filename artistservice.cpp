@@ -1,4 +1,5 @@
 #include "artistservice.h"
+#include "musicqueryservice.h"
 
 ArtistService::ArtistService(
     ArtistRepository& artistRepository,
@@ -321,7 +322,9 @@ vector<Album>  ArtistService::getAlbums(int artistId) const
         return {};
     }
 
-    return m_albumRepository.albums(artistId);
+    vector<Album> albums =m_albumRepository.albums(artistId);
+
+    return MusicQueryService::sortAlbumsByName(albums);
 }
 
 vector<Song>  ArtistService::getSingles(int artistId) const

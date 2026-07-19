@@ -1,5 +1,5 @@
 #include "listenerservice.h"
-
+#include "musicqueryservice.h"
 #include <algorithm>
 #include <cctype>
 
@@ -474,7 +474,9 @@ vector<Playlist>  ListenerService::getPlaylists(int listenerId) const
         return {};
     }
 
-    return m_playlistRepository.playlists(listenerId);
+    vector<Playlist> playlists =m_playlistRepository.playlists(listenerId);
+
+    return MusicQueryService::sortPlaylistsByName(playlists);
 }
 
 vector<Song>  ListenerService::getPlaylistSongs(int listenerId,int playlistId) const

@@ -1,6 +1,5 @@
 #ifndef PLAYLIST_H
 #define PLAYLIST_H
-#pragma once
 
 #include <string>
 #include <vector>

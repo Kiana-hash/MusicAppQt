@@ -28,6 +28,7 @@ qt_add_executable(spotifymahroom
     listenerservice.h listenerservice.cpp
     accountservice.h accountservice.cpp
     musicqueryservice.h musicqueryservice.cpp
+    catalogservice.h catalogservice.cpp
 
 )
 
