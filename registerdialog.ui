@@ -204,9 +204,9 @@
   <widget class="QPushButton" name="choosePhotoButton">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>339</x>
      <y>200</y>
-     <width>80</width>
+     <width>91</width>
      <height>24</height>
     </rect>
    </property>

@@ -2,6 +2,7 @@
 #define ARTISTDASHBOARD_H
 
 #include <QDialog>
+#include <QListWidgetItem>
 
 class ArtistService;
 class CatalogService;
@@ -27,8 +28,16 @@ public:
 
     ~ArtistDashboard();
 
+private slots:
+    void on_logoutButton_clicked();
+
+    void on_albumsListWidget_itemDoubleClicked(QListWidgetItem *item);
+
+    void on_createAlbumButton_clicked();
+
 private:
     Ui::ArtistDashboard* ui;
+    void refreshDashboard();
 
     int m_artistId;
 
