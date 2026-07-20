@@ -23,6 +23,8 @@ private slots:
 
     void on_passwordLineEdit_returnPressed();
 
+    void on_registerButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     AuthService& m_authService;

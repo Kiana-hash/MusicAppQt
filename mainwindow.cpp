@@ -3,6 +3,7 @@
 
 #include "authservice.h"
 #include <QMessageBox>
+#include "registerdialog.h"
 
 MainWindow::MainWindow(AuthService& authService,QWidget *parent)
     : QMainWindow(parent),
@@ -39,5 +40,12 @@ void MainWindow::on_loginButton_clicked()
 void MainWindow::on_passwordLineEdit_returnPressed()
 {
     on_loginButton_clicked();
+}
+
+
+void MainWindow::on_registerButton_clicked()
+{
+    RegisterDialog dialog(m_authService,this);
+    dialog.exec();
 }
 
