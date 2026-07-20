@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+class AuthService;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -14,10 +15,16 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(AuthService& authService, QWidget *parent = nullptr);
     ~MainWindow() override;
+
+private slots:
+    void on_loginButton_clicked();
+
+    void on_passwordLineEdit_returnPressed();
 
 private:
     Ui::MainWindow *ui;
+    AuthService& m_authService;
 };
 #endif // MAINWINDOW_H

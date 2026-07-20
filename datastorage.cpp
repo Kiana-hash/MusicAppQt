@@ -18,13 +18,16 @@ bool DataStorage::saveAll(const RepositoryData& data) const
 
     filesystem::path path(m_filePath);
 
-    try
+    if (path.has_parent_path())
     {
-        create_directories(path.parent_path());
-    }
-    catch (const filesystem::filesystem_error&)
-    {
-        return false;
+        try
+        {
+            filesystem::create_directories(path.parent_path());
+        }
+        catch (const filesystem::filesystem_error&)
+        {
+            return false;
+        }
     }
 
     ofstream file(m_filePath,ios::trunc);
@@ -177,7 +180,7 @@ bool DataStorage::loadAll(RepositoryData& data) const
             );
 
 
-        if (!artist.isValid())
+        if (!artist.isValid() || !artist.isArtist())
         {
             return false;
         }
@@ -226,7 +229,7 @@ bool DataStorage::loadAll(RepositoryData& data) const
             profilePhotoPath
             );
 
-        if (!listener.isValid())
+        if (!listener.isValid() || !listener.isListener())
         {
             return false;
         }
@@ -365,7 +368,10 @@ bool DataStorage::loadAll(RepositoryData& data) const
                 return false;
             }
 
-            playlist.addSong(songId);
+            if (!playlist.addSong(songId))
+            {
+                return false;
+            }
         }
 
 
