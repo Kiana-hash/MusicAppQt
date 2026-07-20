@@ -31,6 +31,8 @@ qt_add_executable(spotifymahroom
     catalogservice.h catalogservice.cpp
     datastorage.h datastorage.cpp
     registerdialog.h registerdialog.cpp registerdialog.ui
+    artistdashboard.h artistdashboard.cpp artistdashboard.ui
+    listenerdashboard.h listenerdashboard.cpp listenerdashboard.ui
 
 )
 

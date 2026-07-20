@@ -86,7 +86,13 @@ int main(int argc, char *argv[])
         );
 
 
-    MainWindow w(authService);
+    MainWindow w(
+        authService,
+        artistService,
+        listenerService,
+        catalogService,
+        accountService
+        );
 
     w.show();
 

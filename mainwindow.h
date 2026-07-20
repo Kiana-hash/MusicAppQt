@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 class AuthService;
+class ArtistService;
+class ListenerService;
+class CatalogService;
+class AccountService;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -15,7 +19,14 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(AuthService& authService, QWidget *parent = nullptr);
+    explicit MainWindow(
+        AuthService& authService,
+        ArtistService& artistService,
+        ListenerService& listenerService,
+        CatalogService& catalogService,
+        AccountService& accountService,
+        QWidget* parent = nullptr
+        );
     ~MainWindow() override;
 
 private slots:
@@ -28,5 +39,9 @@ private slots:
 private:
     Ui::MainWindow *ui;
     AuthService& m_authService;
+    ArtistService& m_artistService;
+    ListenerService& m_listenerService;
+    CatalogService& m_catalogService;
+    AccountService& m_accountService;
 };
 #endif // MAINWINDOW_H

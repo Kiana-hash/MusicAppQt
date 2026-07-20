@@ -4,11 +4,24 @@
 #include "authservice.h"
 #include <QMessageBox>
 #include "registerdialog.h"
+#include "artistdashboard.h"
+#include "listenerdashboard.h"
 
-MainWindow::MainWindow(AuthService& authService,QWidget *parent)
+MainWindow::MainWindow(
+    AuthService& authService,
+    ArtistService& artistService,
+    ListenerService& listenerService,
+    CatalogService& catalogService,
+    AccountService& accountService,
+    QWidget* parent
+    )
     : QMainWindow(parent),
-     ui(new Ui::MainWindow),
-    m_authService(authService)
+    ui(new Ui::MainWindow),
+    m_authService(authService),
+    m_artistService(artistService),
+    m_listenerService(listenerService),
+    m_catalogService(catalogService),
+    m_accountService(accountService)
 {
     ui->setupUi(this);
 }
@@ -33,8 +46,45 @@ void MainWindow::on_loginButton_clicked()
         return;
     }
 
-    QMessageBox::information(this,"Login Successful","Welcome "+ QString::fromStdString(result.account->getFullName()));
+    if (result.account->isArtist())
+    {
+        ArtistDashboard dashboard(
+            result.account->getId(),
+            m_artistService,
+            m_catalogService,
+            m_accountService,
+            this
+            );
+
+        hide();
+
+        dashboard.exec();
+
+        show();
+
+        return;
+    }
+
+    if (result.account->isListener())
+    {
+        ListenerDashboard dashboard(
+            result.account->getId(),
+            m_listenerService,
+            m_catalogService,
+            m_accountService,
+            this
+            );
+
+        hide();
+
+        dashboard.exec();
+
+        show();
+
+        return;
+    }
 }
+
 
 
 void MainWindow::on_passwordLineEdit_returnPressed()
