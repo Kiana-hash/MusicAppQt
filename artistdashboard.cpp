@@ -5,8 +5,8 @@
 #include "catalogservice.h"
 #include "accountservice.h"
 #include <QListWidgetItem>
-#include <QMessageBox>
 #include "createalbumdialog.h"
+#include "albumsongsdialog.h"
 
 ArtistDashboard::ArtistDashboard(
     int artistId,
@@ -72,17 +72,28 @@ void ArtistDashboard::on_logoutButton_clicked()
 
 void ArtistDashboard::on_albumsListWidget_itemDoubleClicked(QListWidgetItem *item)
 {
-    int albumId =item->data(Qt::UserRole).toInt();
-
-    if (albumId == 0)
+    if (item == nullptr)
     {
-        QMessageBox::information(this,"Singles","Singles album selected.");
         return;
     }
-    QMessageBox::information(this,"Album","Album ID: "+ QString::number(albumId));
+
+    const int albumId =item->data(Qt::UserRole).toInt();
+
+    const QString albumName =item->text();
+
+    AlbumSongsDialog dialog(
+        m_artistId,
+        albumId,
+        albumName,
+        m_artistService,
+        m_catalogService,
+        this
+        );
+
+    dialog.exec();
+
+    refreshDashboard();
 }
-
-
 
 void ArtistDashboard::on_createAlbumButton_clicked()
 {
