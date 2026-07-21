@@ -38,6 +38,8 @@ qt_add_executable(spotifymahroom
     createsongdialog.h createsongdialog.cpp createsongdialog.ui
     editsongdialog.h editsongdialog.cpp editsongdialog.ui
     editalbumdialog.h editalbumdialog.cpp editalbumdialog.ui
+    artistbrowsedialog.h artistbrowsedialog.cpp artistbrowsedialog.ui
+    listenersongsdialog.h listenersongsdialog.cpp listenersongsdialog.ui
 
 )
 

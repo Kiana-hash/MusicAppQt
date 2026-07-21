@@ -5,6 +5,7 @@
 #include "catalogservice.h"
 #include "accountservice.h"
 #include <QMessageBox>
+#include "artistbrowsedialog.h"
 
 
 ListenerDashboard::ListenerDashboard(
@@ -74,4 +75,17 @@ void ListenerDashboard::on_logoutButton_clicked()
 }
 
 
+void ListenerDashboard::on_artistsListWidget_itemDoubleClicked(QListWidgetItem *item)
+{
+    if (item == nullptr)
+    {
+        return;
+    }
+
+    const int artistId =item->data(Qt::UserRole).toInt();
+
+    ArtistBrowseDialog dialog(m_listenerId,artistId,m_catalogService,m_listenerService,this);
+
+    dialog.exec();
+}
 

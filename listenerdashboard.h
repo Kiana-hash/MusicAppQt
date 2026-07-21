@@ -2,6 +2,7 @@
 #define LISTENERDASHBOARD_H
 
 #include <QDialog>
+#include<QListWidget>
 
 class ListenerService;
 class CatalogService;
@@ -29,6 +30,8 @@ public:
 
 private slots:
     void on_logoutButton_clicked();
+
+    void on_artistsListWidget_itemDoubleClicked(QListWidgetItem *item);
 
 private:
     Ui::ListenerDashboard* ui;
