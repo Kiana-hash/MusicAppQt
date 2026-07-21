@@ -7,11 +7,10 @@
 #include "editsongdialog.h"
 #include <QMessageBox>
 #include "editalbumdialog.h"
+#include <set>
+#include "musicqueryservice.h"
 
-
-AlbumSongsDialog::AlbumSongsDialog(
-    int artistId,
-    int albumId,
+AlbumSongsDialog::AlbumSongsDialog(int artistId,int albumId,
     const QString& albumName,
     ArtistService& artistService,
     CatalogService& catalogService,
@@ -26,38 +25,81 @@ AlbumSongsDialog::AlbumSongsDialog(
     m_catalogService(catalogService)
 {
     ui->setupUi(this);
+    setupFilterOptions();
 
+    connect(ui->searchLineEdit,&QLineEdit::textChanged,this,&AlbumSongsDialog::refreshSongs);
+    connect(ui->genreComboBox,&QComboBox::currentTextChanged,this,&AlbumSongsDialog::refreshSongs);
+    connect(ui->yearComboBox,&QComboBox::currentTextChanged,this,&AlbumSongsDialog::refreshSongs);
+    connect(ui->sortComboBox,&QComboBox::currentTextChanged,this,&AlbumSongsDialog::refreshSongs);
     refreshSongs();
 }
 
 void AlbumSongsDialog::refreshSongs()
 {
     ui->titleLabel->setText(m_albumName);
+
+    vector<Song> songs =getBaseSongs();
+
+    const string searchText =ui->searchLineEdit->text().toStdString();
+
+    songs =MusicQueryService::searchSongsByName(songs,searchText);
+
+    const QString selectedGenre = ui->genreComboBox->currentText();
+
+    if (selectedGenre != "All Genres")
+    {
+        songs =MusicQueryService::filterSongsByGenre(songs,selectedGenre.toStdString());
+    }
+
+    const QString selectedYear =ui->yearComboBox->currentText();
+
+    if (selectedYear != "All Years")
+    {
+        const int year =selectedYear.toInt();
+        songs =MusicQueryService::filterSongsByReleaseYear(songs,year);
+    }
+
+    const QString selectedSort =ui->sortComboBox->currentText();
+
+    if (selectedSort == "Name A-Z")
+    {
+        songs =MusicQueryService::sortSongsByName(songs,true);
+    }
+    else if (selectedSort == "Name Z-A")
+    {
+        songs =MusicQueryService::sortSongsByName(songs,false);
+    }
+    else if (selectedSort == "Year Oldest-Newest" )
+    {
+        songs =MusicQueryService::sortSongsByReleaseYear(songs,true);
+    }
+    else if (selectedSort== "Year Newest-Oldest")
+    {
+        songs =MusicQueryService::sortSongsByReleaseYear(songs,false);
+    }
+
     ui->songsListWidget->clear();
-    vector<Song> songs;
+
+    for (const Song& song : songs)
+    {
+        QString displayText =QString::fromStdString(song.getName());
+
+        QListWidgetItem* item =new QListWidgetItem(displayText);
+
+        item->setData(Qt::UserRole,song.getId());
+
+        ui->songsListWidget->addItem(item);
+    }
 
     if (m_albumId == 0)
     {
-        songs =m_artistService.getSingles(m_artistId);
         ui->editAlbumButton->hide();
         ui->deleteAlbumButton->hide();
     }
     else
     {
-        songs =m_catalogService.getAlbumSongs(m_albumId);
-
         ui->editAlbumButton->show();
         ui->deleteAlbumButton->show();
-    }
-
-
-    for (const Song& song : songs)
-    {
-        QListWidgetItem* item =new QListWidgetItem(QString::fromStdString(song.getName()));
-
-        item->setData(Qt::UserRole,song.getId());
-
-        ui->songsListWidget->addItem(item);
     }
 }
 
@@ -77,6 +119,7 @@ void AlbumSongsDialog::on_addSongButton_clicked()
 
     if (dialog.exec() == QDialog::Accepted)
     {
+        setupFilterOptions();
         refreshSongs();
     }
 }
@@ -106,6 +149,7 @@ void AlbumSongsDialog::on_editSongButton_clicked()
 
     if (dialog.exec() == QDialog::Accepted)
     {
+        setupFilterOptions();
         refreshSongs();
     }
 }
@@ -147,6 +191,7 @@ void AlbumSongsDialog::on_deleteSongButton_clicked()
         return;
     }
 
+    setupFilterOptions();
     refreshSongs();
 }
 
@@ -205,3 +250,45 @@ void AlbumSongsDialog::on_deleteAlbumButton_clicked()
     accept();
 }
 
+vector<Song>  AlbumSongsDialog::getBaseSongs() const
+{
+    if (m_albumId == 0)
+    {
+        return m_artistService.getSingles(m_artistId);
+    }
+
+    return m_catalogService.getAlbumSongs(m_albumId);
+}
+
+void AlbumSongsDialog::setupFilterOptions()
+{
+    vector<Song> songs =getBaseSongs();
+
+    set<string> genres;
+
+    set<int> years;
+
+    for (const Song& song : songs)
+    {
+        genres.insert(song.getGenre());
+
+        years.insert(song.getReleaseYear());
+    }
+
+    ui->genreComboBox->clear();
+
+    ui->genreComboBox->addItem("All Genres");
+
+    for (const string& genre : genres)
+    {
+        ui->genreComboBox->addItem(QString::fromStdString(genre));
+    }
+
+    ui->yearComboBox->clear();
+    ui->yearComboBox->addItem("All Years");
+
+    for (int year : years)
+    {
+        ui->yearComboBox->addItem(QString::number(year));
+    }
+}
