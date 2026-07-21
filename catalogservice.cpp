@@ -67,3 +67,8 @@ optional<Song>  CatalogService::getSong(int songId) const
 {
     return m_songRepository.search(songId);
 }
+
+optional<Album> CatalogService::getAlbum(int albumId) const
+{
+    return m_albumRepository.search(albumId);
+}

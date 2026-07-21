@@ -6,6 +6,7 @@
 #include "createsongdialog.h"
 #include "editsongdialog.h"
 #include <QMessageBox>
+#include "editalbumdialog.h"
 
 
 AlbumSongsDialog::AlbumSongsDialog(
@@ -147,5 +148,60 @@ void AlbumSongsDialog::on_deleteSongButton_clicked()
     }
 
     refreshSongs();
+}
+
+void AlbumSongsDialog::on_editAlbumButton_clicked()
+{
+    if (m_albumId == 0)
+    {
+        return;
+    }
+
+    EditAlbumDialog dialog(m_artistId,m_albumId,m_artistService,m_catalogService,this);
+
+    if (dialog.exec() == QDialog::Accepted)
+    {
+        optional<Album> album =m_catalogService.getAlbum(m_albumId);
+
+        if (album.has_value())
+        {
+            m_albumName =QString::fromStdString(album->getName());
+        }
+
+        refreshSongs();
+    }
+}
+
+void AlbumSongsDialog::on_deleteAlbumButton_clicked()
+{
+    if (m_albumId == 0)
+    {
+        return;
+    }
+
+
+    QMessageBox::StandardButton answer =QMessageBox::question(this,"Delete Album",
+            "Deleting this album will also delete all songs inside it.\n\n"
+            "Are you sure?",
+            QMessageBox::Yes |QMessageBox::No);
+
+
+    if (answer != QMessageBox::Yes)
+    {
+        return;
+    }
+
+    bool success =m_artistService.deleteAlbum(m_artistId,m_albumId);
+
+    if (!success)
+    {
+        QMessageBox::warning(this,"Delete Failed","The album could not be deleted.");
+
+        return;
+    }
+
+    QMessageBox::information(this,"Album Deleted","The album was deleted successfully.");
+
+    accept();
 }
 
