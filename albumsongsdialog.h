@@ -30,6 +30,8 @@ public:
 private slots:
     void on_closeButton_clicked();
 
+    void on_addSongButton_clicked();
+
 private:
     void refreshSongs();
 

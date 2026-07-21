@@ -16,10 +16,10 @@
   <widget class="QLabel" name="welcomeLabel">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>10</x>
      <y>10</y>
-     <width>241</width>
-     <height>16</height>
+     <width>281</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
@@ -39,9 +39,9 @@
   <widget class="QPushButton" name="createAlbumButton">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>9</x>
      <y>300</y>
-     <width>80</width>
+     <width>101</width>
      <height>24</height>
     </rect>
    </property>
@@ -52,7 +52,7 @@
   <widget class="QPushButton" name="createSingleButton">
    <property name="geometry">
     <rect>
-     <x>120</x>
+     <x>130</x>
      <y>300</y>
      <width>80</width>
      <height>24</height>

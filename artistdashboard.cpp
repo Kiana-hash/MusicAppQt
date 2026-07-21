@@ -7,6 +7,7 @@
 #include <QListWidgetItem>
 #include "createalbumdialog.h"
 #include "albumsongsdialog.h"
+#include "createsongdialog.h"
 
 ArtistDashboard::ArtistDashboard(
     int artistId,
@@ -98,6 +99,16 @@ void ArtistDashboard::on_albumsListWidget_itemDoubleClicked(QListWidgetItem *ite
 void ArtistDashboard::on_createAlbumButton_clicked()
 {
     CreateAlbumDialog dialog(m_artistId,m_artistService,this);
+
+    if (dialog.exec() == QDialog::Accepted)
+    {
+        refreshDashboard();
+    }
+}
+
+void ArtistDashboard::on_createSingleButton_clicked()
+{
+    CreateSongDialog dialog(m_artistId,0,m_artistService,this);
 
     if (dialog.exec() == QDialog::Accepted)
     {

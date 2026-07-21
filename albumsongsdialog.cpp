@@ -3,6 +3,7 @@
 
 #include "artistservice.h"
 #include "catalogservice.h"
+#include "createsongdialog.h"
 
 
 AlbumSongsDialog::AlbumSongsDialog(
@@ -64,5 +65,16 @@ AlbumSongsDialog::~AlbumSongsDialog()
 void AlbumSongsDialog::on_closeButton_clicked()
 {
     accept();
+}
+
+
+void AlbumSongsDialog::on_addSongButton_clicked()
+{
+    CreateSongDialog dialog(m_artistId,m_albumId,m_artistService,this);
+
+    if (dialog.exec() == QDialog::Accepted)
+    {
+        refreshSongs();
+    }
 }
 

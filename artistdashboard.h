@@ -35,6 +35,8 @@ private slots:
 
     void on_createAlbumButton_clicked();
 
+    void on_createSingleButton_clicked();
+
 private:
     Ui::ArtistDashboard* ui;
     void refreshDashboard();
