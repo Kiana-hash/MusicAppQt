@@ -4,6 +4,8 @@
 #include "artistservice.h"
 #include "catalogservice.h"
 #include "createsongdialog.h"
+#include "editsongdialog.h"
+#include <QMessageBox>
 
 
 AlbumSongsDialog::AlbumSongsDialog(
@@ -76,5 +78,74 @@ void AlbumSongsDialog::on_addSongButton_clicked()
     {
         refreshSongs();
     }
+}
+
+
+void AlbumSongsDialog::on_editSongButton_clicked()
+{
+    QListWidgetItem* selectedItem =ui->songsListWidget->currentItem();
+
+
+    if (selectedItem == nullptr)
+    {
+        QMessageBox::warning(this,"No Song Selected","Please select a song first.");
+
+        return;
+    }
+
+    const int songId =selectedItem->data(Qt::UserRole).toInt();
+
+    EditSongDialog dialog(
+        m_artistId,
+        songId,
+        m_artistService,
+        m_catalogService,
+        this
+        );
+
+    if (dialog.exec() == QDialog::Accepted)
+    {
+        refreshSongs();
+    }
+}
+
+
+void AlbumSongsDialog::on_deleteSongButton_clicked()
+{
+    QListWidgetItem* selectedItem =ui->songsListWidget->currentItem();
+
+
+    if (selectedItem == nullptr)
+    {
+        QMessageBox::warning(this,"No Song Selected","Please select a song first.");
+
+        return;
+    }
+
+
+    const QMessageBox::StandardButton answer =QMessageBox::question(this,"Delete Song",
+            "Are you sure you want to delete this song?",
+            QMessageBox::Yes | QMessageBox::No
+            );
+
+
+    if (answer != QMessageBox::Yes)
+    {
+        return;
+    }
+
+    const int songId =selectedItem->data(Qt::UserRole).toInt();
+
+    bool success =m_artistService.deleteSong(m_artistId,songId);
+
+
+    if (!success)
+    {
+        QMessageBox::warning(this,"Delete Failed","The song could not be deleted.");
+
+        return;
+    }
+
+    refreshSongs();
 }
 
