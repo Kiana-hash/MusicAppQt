@@ -4,6 +4,7 @@
 #include "listenerservice.h"
 #include "catalogservice.h"
 #include "musicqueryservice.h"
+#include "chooseplaylistdialog.h"
 
 #include <QComboBox>
 #include <QLineEdit>
@@ -162,12 +163,14 @@ void ListenerSongsDialog::updateLikeButton()
         ui->likeButton->setText("Like");
 
         ui->likeButton->setEnabled(false);
+        ui->addToPlaylistButton->setEnabled(false);
 
         return;
     }
 
 
     ui->likeButton->setEnabled(true);
+     ui->addToPlaylistButton->setEnabled(true);
 
     const int songId =item->data(Qt::UserRole).toInt();
 
@@ -221,5 +224,28 @@ void ListenerSongsDialog::on_likeButton_clicked()
 void ListenerSongsDialog::on_closeButton_clicked()
 {
     accept();
+}
+
+
+void ListenerSongsDialog::on_addToPlaylistButton_clicked()
+{
+    QListWidgetItem* item =ui->songsListWidget->currentItem();
+
+    if (item == nullptr)
+    {
+        QMessageBox::warning(this,"No Song Selected","Please select a song first.");
+        return;
+    }
+
+
+    const int songId =item->data(Qt::UserRole).toInt();
+
+    ChoosePlaylistDialog dialog(m_listenerId,songId,m_listenerService,this);
+
+
+    if (dialog.exec() == QDialog::Accepted)
+    {
+        updateLikeButton();
+    }
 }
 
