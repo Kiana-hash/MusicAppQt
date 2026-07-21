@@ -89,3 +89,9 @@ void ListenerDashboard::on_artistsListWidget_itemDoubleClicked(QListWidgetItem *
     dialog.exec();
 }
 
+
+void ListenerDashboard::on_createPlaylistButton_clicked()
+{
+
+}
+
