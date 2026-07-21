@@ -27,8 +27,12 @@ public:
 
     ~ListenerDashboard();
 
+private slots:
+    void on_logoutButton_clicked();
+
 private:
     Ui::ListenerDashboard* ui;
+    void refreshDashboard();
 
     int m_listenerId;
 

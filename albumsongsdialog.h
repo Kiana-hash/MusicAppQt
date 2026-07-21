@@ -2,6 +2,8 @@
 #define ALBUMSONGSDIALOG_H
 
 #include <QDialog>
+#include <vector>
+#include "song.h"
 
 class ArtistService;
 class CatalogService;
@@ -36,6 +38,10 @@ private slots:
 
     void on_deleteSongButton_clicked();
 
+    void on_editAlbumButton_clicked();
+
+    void on_deleteAlbumButton_clicked();
+
 private:
     void refreshSongs();
 
@@ -48,6 +54,8 @@ private:
 
     ArtistService& m_artistService;
     CatalogService& m_catalogService;
+    vector<Song> getBaseSongs() const;
+    void setupFilterOptions();
 };
 
 #endif

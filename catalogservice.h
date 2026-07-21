@@ -22,6 +22,7 @@ public:
     vector<Song> getAlbumSongs(int albumId) const;
 
     optional<Song> getSong(int songId) const;
+    optional<Album> getAlbum(int albumId) const;
 
 private:
     ArtistRepository& m_artistRepository;

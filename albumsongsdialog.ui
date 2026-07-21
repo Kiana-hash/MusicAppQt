@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>483</width>
-    <height>359</height>
+    <width>593</width>
+    <height>403</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>30</y>
-     <width>256</width>
+     <y>90</y>
+     <width>391</width>
      <height>301</height>
     </rect>
    </property>
@@ -26,8 +26,8 @@
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>20</y>
+     <x>430</x>
+     <y>90</y>
      <width>160</width>
      <height>301</height>
     </rect>
@@ -89,6 +89,69 @@
    <property name="text">
     <string>TextLabel</string>
    </property>
+  </widget>
+  <widget class="QLineEdit" name="searchLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>40</y>
+     <width>181</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>Search songs...</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="genreComboBox">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>40</y>
+     <width>111</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="yearComboBox">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>40</y>
+     <width>72</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="sortComboBox">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>40</y>
+     <width>131</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Name A-Z</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Name Z-A</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Year Oldest-Newest</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Year Newest-Oldest</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources/>
