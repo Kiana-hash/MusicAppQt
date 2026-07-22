@@ -116,3 +116,9 @@ void ArtistDashboard::on_createSingleButton_clicked()
     }
 }
 
+
+void ArtistDashboard::on_accountButton_clicked()
+{
+
+}
+

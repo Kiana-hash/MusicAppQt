@@ -8,6 +8,7 @@
 #include "artistbrowsedialog.h"
 #include "createplaylistdialog.h"
 #include "playlistsongsdialog.h"
+#include "accountsettingsdialog.h"
 
 
 ListenerDashboard::ListenerDashboard(
@@ -115,6 +116,22 @@ void ListenerDashboard::on_playlistsListWidget_itemDoubleClicked(QListWidgetItem
     PlaylistSongsDialog dialog(m_listenerId,playlistId,item->text(),m_listenerService,this);
 
     dialog.exec();
+
+    refreshDashboard();
+}
+
+
+void ListenerDashboard::on_accountButton_clicked()
+{
+    AccountSettingsDialog dialog(m_listenerId,m_accountService,this);
+
+    dialog.exec();
+
+    if (dialog.wasAccountDeleted())
+    {
+        accept();
+        return;
+    }
 
     refreshDashboard();
 }
