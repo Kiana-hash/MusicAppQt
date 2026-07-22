@@ -2,6 +2,7 @@
 #define ACCOUNTSETTINGSDIALOG_H
 
 #include <QDialog>
+#include <QPixmap>
 
 class AccountService;
 

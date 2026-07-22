@@ -20,6 +20,7 @@ ArtistBrowseDialog::ArtistBrowseDialog(int listenerId,int artistId,
     m_listenerService(listenerService)
 {
     ui->setupUi(this);
+    ui->albumsListWidget->setIconSize(QSize(60, 60));
 
     refreshArtist();
 }
@@ -45,7 +46,8 @@ void ArtistBrowseDialog::refreshArtist()
 
     for (const Album& album : albums)
     {
-        QListWidgetItem* item =new QListWidgetItem(QString::fromStdString(album.getName()));
+        QListWidgetItem* item =new QListWidgetItem(QIcon(QString::fromStdString(album.getCoverPath())),
+                QString::fromStdString(album.getName()));
 
         item->setData(Qt::UserRole,album.getId());
 

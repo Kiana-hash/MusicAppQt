@@ -9,6 +9,7 @@
 #include "createplaylistdialog.h"
 #include "playlistsongsdialog.h"
 #include "accountsettingsdialog.h"
+#include "imageutils.h"
 
 
 ListenerDashboard::ListenerDashboard(
@@ -44,6 +45,8 @@ void ListenerDashboard::refreshDashboard()
     {
         ui->welcomeLabel->setText("Welcome, "+ QString::fromStdString(account->getFullName()));
     }
+
+    ImageUtils::displayImage(ui->profilePhotoLabel,QString::fromStdString(account->getProfilePhotoPath()));
 
     ui->artistsListWidget->clear();
 

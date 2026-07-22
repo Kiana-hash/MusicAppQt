@@ -9,6 +9,8 @@
 #include "albumsongsdialog.h"
 #include "createsongdialog.h"
 #include "accountsettingsdialog.h"
+#include "imageutils.h"
+#include <QIcon>
 
 ArtistDashboard::ArtistDashboard(
     int artistId,
@@ -25,6 +27,7 @@ ArtistDashboard::ArtistDashboard(
     m_accountService(accountService)
 {
     ui->setupUi(this);
+    ui->albumsListWidget->setIconSize(QSize(60, 60));
 
     refreshDashboard();
 }
@@ -39,13 +42,16 @@ void ArtistDashboard::refreshDashboard()
         ui->welcomeLabel->setText("Welcome, "+ QString::fromStdString(account->getFullName()));
     }
 
+    ImageUtils::displayImage(ui->profilePhotoLabel,QString::fromStdString(account->getProfilePhotoPath()));
+
     ui->albumsListWidget->clear();
 
     vector<Album> albums =m_artistService.getAlbums(m_artistId);
 
     for (const Album& album : albums)
     {
-        QListWidgetItem* item = new QListWidgetItem(QString::fromStdString(album.getName()));
+        QListWidgetItem* item =new QListWidgetItem(QIcon(QString::fromStdString(album.getCoverPath())),
+                QString::fromStdString(album.getName()));
         item->setData(Qt::UserRole,album.getId());
         ui->albumsListWidget->addItem(item);
     }

@@ -4,6 +4,7 @@
 #include "accountservice.h"
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QPixmap>
 
 
 AccountSettingsDialog::AccountSettingsDialog(int accountId,AccountService& accountService,QWidget* parent)
@@ -39,6 +40,15 @@ void AccountSettingsDialog::loadAccount()
     ui->biographyTextEdit->setPlainText(QString::fromStdString(account->getBiography()));
 
     ui->profilePhotoLineEdit->setText(QString::fromStdString(account->getProfilePhotoPath()));
+
+    const QString photoPath =QString::fromStdString(account->getProfilePhotoPath());
+
+    QPixmap pixmap(photoPath);
+
+    if (!pixmap.isNull())
+    {
+        ui->profilePhotoLabel->setPixmap(pixmap.scaled(ui->profilePhotoLabel->size(),Qt::KeepAspectRatio,Qt::SmoothTransformation));
+    }
 }
 
 bool AccountSettingsDialog::wasAccountDeleted() const
@@ -56,6 +66,15 @@ void AccountSettingsDialog::on_choosePhotoButton_clicked()
     }
 
     ui->profilePhotoLineEdit->setText(filePath);
+
+    QPixmap pixmap(filePath);
+
+    if (!pixmap.isNull())
+    {
+        ui->profilePhotoLabel->setPixmap(pixmap.scaled(ui->profilePhotoLabel->size(),
+                Qt::KeepAspectRatio,
+                Qt::SmoothTransformation));
+    }
 }
 
 

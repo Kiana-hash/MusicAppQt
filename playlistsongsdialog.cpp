@@ -26,6 +26,7 @@ PlaylistSongsDialog::PlaylistSongsDialog(int listenerId,int playlistId,
     m_listenerService(listenerService)
 {
     ui->setupUi(this);
+    ui->songsListWidget->setIconSize(QSize(40,40));
 
     setupFilterOptions();
 
@@ -137,7 +138,8 @@ void PlaylistSongsDialog::refreshSongs()
 
     for (const Song& song : songs)
     {
-        QListWidgetItem* item =new QListWidgetItem(QString::fromStdString(song.getName()));
+        QListWidgetItem* item =new QListWidgetItem(QIcon(QString::fromStdString(song.getCoverPath())),
+                                                    QString::fromStdString(song.getName()));
 
         item->setData(Qt::UserRole,song.getId());
 

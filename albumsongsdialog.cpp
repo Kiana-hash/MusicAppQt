@@ -25,6 +25,7 @@ AlbumSongsDialog::AlbumSongsDialog(int artistId,int albumId,
     m_catalogService(catalogService)
 {
     ui->setupUi(this);
+    ui->songsListWidget->setIconSize(QSize(40,40));
     setupFilterOptions();
 
     connect(ui->searchLineEdit,&QLineEdit::textChanged,this,&AlbumSongsDialog::refreshSongs);
@@ -82,9 +83,8 @@ void AlbumSongsDialog::refreshSongs()
 
     for (const Song& song : songs)
     {
-        QString displayText =QString::fromStdString(song.getName());
-
-        QListWidgetItem* item =new QListWidgetItem(displayText);
+        QListWidgetItem* item =new QListWidgetItem(QIcon(QString::fromStdString(song.getCoverPath())),
+                QString::fromStdString(song.getName()));
 
         item->setData(Qt::UserRole,song.getId());
 

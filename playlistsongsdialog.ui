@@ -110,13 +110,6 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="deleteSongButton">
-      <property name="text">
-       <string>Delete Song</string>
-      </property>
-     </widget>
-    </item>
-    <item>
      <widget class="QPushButton" name="deletePlaylistButton">
       <property name="text">
        <string>Delete Playlist</string>

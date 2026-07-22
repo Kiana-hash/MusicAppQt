@@ -133,6 +133,12 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="minimum">
+    <number>1800</number>
+   </property>
+   <property name="maximum">
+    <number>2027</number>
+   </property>
   </widget>
   <widget class="QPushButton" name="chooseAudioButton">
    <property name="geometry">

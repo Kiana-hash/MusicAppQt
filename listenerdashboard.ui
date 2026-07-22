@@ -16,10 +16,10 @@
   <widget class="QLabel" name="welcomeLabel">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>151</width>
-     <height>16</height>
+     <x>150</x>
+     <y>30</y>
+     <width>171</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
@@ -30,7 +30,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>40</y>
+     <y>110</y>
      <width>49</width>
      <height>16</height>
     </rect>
@@ -43,9 +43,9 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>60</y>
+     <y>130</y>
      <width>201</width>
-     <height>281</height>
+     <height>211</height>
     </rect>
    </property>
   </widget>
@@ -53,7 +53,7 @@
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>40</y>
+     <y>110</y>
      <width>101</width>
      <height>16</height>
     </rect>
@@ -66,9 +66,9 @@
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>60</y>
+     <y>130</y>
      <width>211</width>
-     <height>281</height>
+     <height>211</height>
     </rect>
    </property>
   </widget>
@@ -104,6 +104,19 @@
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="profilePhotoLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>111</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
   </widget>
  </widget>
  <resources/>

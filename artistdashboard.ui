@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>431</width>
-    <height>349</height>
+    <height>389</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QLabel" name="welcomeLabel">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>281</width>
-     <height>20</height>
+     <x>170</x>
+     <y>30</y>
+     <width>141</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
@@ -30,7 +30,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>40</y>
+     <y>100</y>
      <width>401</width>
      <height>241</height>
     </rect>
@@ -39,8 +39,8 @@
   <widget class="QPushButton" name="createAlbumButton">
    <property name="geometry">
     <rect>
-     <x>9</x>
-     <y>300</y>
+     <x>10</x>
+     <y>350</y>
      <width>101</width>
      <height>24</height>
     </rect>
@@ -52,8 +52,8 @@
   <widget class="QPushButton" name="createSingleButton">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>300</y>
+     <x>120</x>
+     <y>350</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -66,7 +66,7 @@
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>300</y>
+     <y>350</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -78,14 +78,27 @@
   <widget class="QPushButton" name="logoutButton">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>300</y>
+     <x>320</x>
+     <y>350</y>
      <width>80</width>
      <height>24</height>
     </rect>
    </property>
    <property name="text">
     <string> Logout</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="profilePhotoLabel">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>101</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
    </property>
   </widget>
  </widget>
