@@ -8,6 +8,7 @@
 #include "createalbumdialog.h"
 #include "albumsongsdialog.h"
 #include "createsongdialog.h"
+#include "accountsettingsdialog.h"
 
 ArtistDashboard::ArtistDashboard(
     int artistId,
@@ -119,6 +120,16 @@ void ArtistDashboard::on_createSingleButton_clicked()
 
 void ArtistDashboard::on_accountButton_clicked()
 {
+    AccountSettingsDialog dialog(m_artistId,m_accountService,this);
 
+    dialog.exec();
+
+    if (dialog.wasAccountDeleted())
+    {
+        accept();
+        return;
+    }
+
+    refreshDashboard();
 }
 
