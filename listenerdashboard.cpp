@@ -6,6 +6,8 @@
 #include "accountservice.h"
 #include <QMessageBox>
 #include "artistbrowsedialog.h"
+#include "createplaylistdialog.h"
+#include "playlistsongsdialog.h"
 
 
 ListenerDashboard::ListenerDashboard(
@@ -92,6 +94,28 @@ void ListenerDashboard::on_artistsListWidget_itemDoubleClicked(QListWidgetItem *
 
 void ListenerDashboard::on_createPlaylistButton_clicked()
 {
+    CreatePlaylistDialog dialog(m_listenerId,m_listenerService,this);
 
+    if (dialog.exec() == QDialog::Accepted)
+    {
+        refreshDashboard();
+    }
+}
+
+
+void ListenerDashboard::on_playlistsListWidget_itemDoubleClicked(QListWidgetItem *item)
+{
+    if (item == nullptr)
+    {
+        return;
+    }
+
+    const int playlistId =item->data(Qt::UserRole).toInt();
+
+    PlaylistSongsDialog dialog(m_listenerId,playlistId,item->text(),m_listenerService,this);
+
+    dialog.exec();
+
+    refreshDashboard();
 }
 

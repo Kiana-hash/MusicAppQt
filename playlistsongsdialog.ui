@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PlaylistSongsDialog</class>
+ <widget class="QDialog" name="PlaylistSongsDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>491</width>
+    <height>374</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLabel" name="titleLabel">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>91</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>50</y>
+     <width>461</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLineEdit" name="searchLineEdit">
+      <property name="placeholderText">
+       <string>Search songs...</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="genreComboBox"/>
+    </item>
+    <item>
+     <widget class="QComboBox" name="yearComboBox"/>
+    </item>
+    <item>
+     <widget class="QComboBox" name="sortComboBox">
+      <item>
+       <property name="text">
+        <string>Name A-Z</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Name Z-A</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Year Oldest-Newest</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Year Newest-Oldest</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QListWidget" name="songsListWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>90</y>
+     <width>321</width>
+     <height>261</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>80</y>
+     <width>131</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPushButton" name="removeSongButton">
+      <property name="text">
+       <string>Remove Song</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="renamePlaylistButton">
+      <property name="text">
+       <string>Rename Playlist</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="deleteSongButton">
+      <property name="text">
+       <string>Delete Song</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="deletePlaylistButton">
+      <property name="text">
+       <string>Delete Playlist</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="closeButton">
+      <property name="text">
+       <string>Close</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

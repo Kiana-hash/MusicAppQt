@@ -32,6 +32,8 @@ private slots:
 
     void on_closeButton_clicked();
 
+    void on_addToPlaylistButton_clicked();
+
 private:
     vector<Song> getBaseSongs() const;
 

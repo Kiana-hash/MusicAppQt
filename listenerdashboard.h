@@ -33,6 +33,10 @@ private slots:
 
     void on_artistsListWidget_itemDoubleClicked(QListWidgetItem *item);
 
+    void on_createPlaylistButton_clicked();
+
+    void on_playlistsListWidget_itemDoubleClicked(QListWidgetItem *item);
+
 private:
     Ui::ListenerDashboard* ui;
     void refreshDashboard();

@@ -3,7 +3,10 @@
 
 #include <QDialog>
 
-namespace Ui {
+class ListenerService;
+
+namespace Ui
+{
 class CreatePlaylistDialog;
 }
 
@@ -12,11 +15,23 @@ class CreatePlaylistDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit CreatePlaylistDialog(QWidget *parent = nullptr);
+    explicit CreatePlaylistDialog(int listenerId,ListenerService& listenerService,
+        QWidget* parent = nullptr
+        );
+
     ~CreatePlaylistDialog();
 
+private slots:
+    void on_createButton_clicked();
+
+    void on_cancelButton_clicked();
+
 private:
-    Ui::CreatePlaylistDialog *ui;
+    Ui::CreatePlaylistDialog* ui;
+
+    int m_listenerId;
+
+    ListenerService& m_listenerService;
 };
 
-#endif // CREATEPLAYLISTDIALOG_H
+#endif
