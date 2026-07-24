@@ -20,7 +20,21 @@ MusicPlayerDialog::MusicPlayerDialog(const vector<Song>& songs,int startingSongI
     m_audioOutput(new QAudioOutput(this))
 {
     ui->setupUi(this);
+    ui->statusLabel->setText("Stopped");
 
+    ui->currentTimeLabel->setText("00:00");
+
+    ui->durationLabel->setText("00:00");
+
+    ui->playButton->setEnabled(!m_songs.empty());
+
+    ui->pauseButton->setEnabled(!m_songs.empty());
+
+    ui->stopButton->setEnabled(!m_songs.empty());
+
+    ui->nextButton->setEnabled(m_songs.size() > 1);
+
+    ui->previousButton->setEnabled(m_songs.size() > 1);
 
     m_player->setAudioOutput( m_audioOutput);
 
@@ -36,6 +50,7 @@ MusicPlayerDialog::MusicPlayerDialog(const vector<Song>& songs,int startingSongI
     connect(m_player,&QMediaPlayer::durationChanged, this,&MusicPlayerDialog::updateDuration);
     connect(m_player,&QMediaPlayer::playbackStateChanged,this,&MusicPlayerDialog::updatePlaybackState);
     connect(m_player, &QMediaPlayer::errorChanged,this,&MusicPlayerDialog::handlePlayerError);
+    connect(m_player,&QMediaPlayer::mediaStatusChanged,this,&MusicPlayerDialog::handleMediaStatusChanged);
 
     loadPlaylist();
 
@@ -133,6 +148,9 @@ void MusicPlayerDialog::playSong(int songId)
         const QString coverPath =QString::fromStdString(song.getCoverPath());
 
         ImageUtils::displayImage(ui->coverLabel,coverPath);
+        ui->positionSlider->setValue(0);
+        ui->currentTimeLabel->setText("00:00");
+        ui->durationLabel->setText("00:00");
 
         m_player->setSource(QUrl::fromLocalFile(audioPath));
 
@@ -316,3 +334,10 @@ void MusicPlayerDialog::on_volumeSlider_valueChanged(int volume)
     m_audioOutput->setVolume(volume / 100.0);
 }
 
+void MusicPlayerDialog::handleMediaStatusChanged(QMediaPlayer::MediaStatus status)
+{
+    if (status == QMediaPlayer::EndOfMedia)
+    {
+        on_nextButton_clicked();
+    }
+}

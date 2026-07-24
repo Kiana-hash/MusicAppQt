@@ -40,6 +40,7 @@ private slots:
     void updateDuration(qint64 duration);
     void updatePlaybackState(QMediaPlayer::PlaybackState state);
     void handlePlayerError();
+    void handleMediaStatusChanged(QMediaPlayer::MediaStatus status);
 
 
 private:
