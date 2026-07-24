@@ -13,23 +13,386 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">/* =========================================
+   SHARED DARK SYNTHWAVE FOUNDATION
+   ========================================= */
+
+QWidget {
+    color: #F7F5FF;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 10pt;
+}
+
+QDialog,
+QMainWindow {
+    background-color: #080817;
+}
+
+/* ---------- Labels ---------- */
+
+QLabel {
+    color: #F7F5FF;
+    background-color: transparent;
+}
+
+/* ---------- Text inputs ---------- */
+
+QLineEdit,
+QTextEdit,
+QSpinBox,
+QComboBox {
+    color: #F7F5FF;
+    background-color: rgba(17, 19, 39, 235);
+
+    border: 1px solid #37335C;
+    border-radius: 8px;
+
+    padding: 6px 9px;
+
+    selection-background-color: #8B5CF6;
+    selection-color: white;
+}
+
+QLineEdit:hover,
+QTextEdit:hover,
+QSpinBox:hover,
+QComboBox:hover {
+    border-color: #625A92;
+}
+
+QLineEdit:focus,
+QTextEdit:focus,
+QSpinBox:focus,
+QComboBox:focus {
+    background-color: #151831;
+    border: 1px solid #27D7F2;
+}
+
+QLineEdit:disabled,
+QTextEdit:disabled,
+QSpinBox:disabled,
+QComboBox:disabled {
+    color: #686581;
+    background-color: #0E1022;
+    border-color: #25233D;
+}
+
+/* ---------- Combo box ---------- */
+
+QComboBox::drop-down {
+    width: 25px;
+    border: none;
+}
+
+QComboBox QAbstractItemView {
+    color: #F7F5FF;
+    background-color: #14162D;
+
+    border: 1px solid #534B82;
+    border-radius: 7px;
+
+    padding: 4px;
+    outline: none;
+
+    selection-color: white;
+    selection-background-color: #734BD1;
+}
+
+/* ---------- Buttons ---------- */
+
+QPushButton {
+    min-height: 30px;
+
+    color: #F7F5FF;
+    background-color: #1A1D3B;
+
+    border: 1px solid #49446F;
+    border-radius: 8px;
+
+    padding: 2px 12px;
+
+    font-weight: 600;
+}
+
+QPushButton:hover {
+    background-color: #27264D;
+    border-color: #9B7CFF;
+}
+
+QPushButton:pressed {
+    background-color: #342A68;
+    border-color: #F15BB5;
+}
+
+QPushButton:focus {
+    border-color: #27D7F2;
+}
+
+QPushButton:disabled {
+    color: #686581;
+    background-color: #101225;
+    border-color: #282640;
+}
+
+/* ---------- Lists ---------- */
+
+QListWidget {
+    color: #F7F5FF;
+    background-color: rgba(14, 16, 35, 238);
+
+    border: 1px solid #302D52;
+    border-radius: 12px;
+
+    padding: 5px;
+    outline: none;
+}
+
+QListWidget::item {
+    min-height: 34px;
+
+    margin: 2px;
+    padding: 6px 9px;
+
+    border-radius: 8px;
+}
+
+QListWidget::item:hover {
+    background-color: rgba(93, 68, 157, 125);
+}
+
+QListWidget::item:selected {
+    color: white;
+    background-color: #6842C2;
+}
+
+/* ---------- Scrollbars ---------- */
+
+QScrollBar:vertical {
+    width: 10px;
+
+    background-color: transparent;
+
+    margin: 5px 2px 5px 0;
+}
+
+QScrollBar::handle:vertical {
+    min-height: 30px;
+
+    background-color: #4C4477;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #8B5CF6;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical,
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    height: 0;
+    background-color: transparent;
+}
+
+/* ---------- Radio buttons ---------- */
+
+QRadioButton {
+    color: #D8D4EC;
+    spacing: 7px;
+}
+
+QRadioButton::indicator {
+    width: 15px;
+    height: 15px;
+
+    background-color: #111327;
+
+    border: 1px solid #625A92;
+    border-radius: 8px;
+}
+
+QRadioButton::indicator:hover {
+    border-color: #27D7F2;
+}
+
+QRadioButton::indicator:checked {
+    background-color: #F15BB5;
+    border: 4px solid #211B43;
+}
+
+/* ---------- Sliders ---------- */
+
+QSlider::groove:horizontal {
+    height: 6px;
+
+    background-color: #292642;
+    border-radius: 3px;
+}
+
+QSlider::sub-page:horizontal {
+    background: qlineargradient(
+        x1: 0,
+        y1: 0,
+        x2: 1,
+        y2: 0,
+        stop: 0 #27D7F2,
+        stop: 0.52 #8B5CF6,
+        stop: 1 #F15BB5
+    );
+
+    border-radius: 3px;
+}
+
+QSlider::add-page:horizontal {
+    background-color: #292642;
+    border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+    width: 15px;
+
+    margin: -5px 0;
+
+    background-color: #F7F5FF;
+
+    border: 2px solid #A66CFF;
+    border-radius: 8px;
+}
+
+QSlider::handle:horizontal:hover {
+    background-color: #27D7F2;
+    border-color: white;
+}
+
+/* ---------- Tooltips ---------- */
+
+QToolTip {
+    color: white;
+    background-color: #171A35;
+
+    border: 1px solid #8B5CF6;
+    border-radius: 5px;
+
+    padding: 5px;
+}
+
+/* ---------- Message boxes ---------- */
+
+QMessageBox {
+    background-color: #0D0F20;
+}
+
+QMessageBox QLabel {
+    min-width: 260px;
+    color: #F7F5FF;
+}
+
+QMessageBox QPushButton {
+    min-width: 84px;
+}
+
+/* ACCOUNT SETTINGS */
+
+QDialog#AccountSettingsDialog {
+    background: qlineargradient(
+        x1: 0,
+        y1: 0,
+        x2: 1,
+        y2: 1,
+        stop: 0 #080817,
+        stop: 0.56 #11142D,
+        stop: 1 #251640
+    );
+}
+
+QLabel#profilePhotoLabel {
+    color: #8D87A6;
+    background-color: #15172F;
+
+    border: 2px solid #8B5CF6;
+    border-radius: 16px;
+}
+
+QLabel#label_2,
+QLabel#label_3,
+QLabel#label_4,
+QLabel#label_5,
+QLabel#label_6 {
+    color: #C8C2DB;
+    font-weight: 600;
+}
+
+QTextEdit#biographyTextEdit {
+    background-color: rgba(13, 15, 34, 235);
+}
+
+QPushButton#saveProfileButton {
+    color: white;
+
+    background: qlineargradient(
+        x1: 0,
+        y1: 0,
+        x2: 1,
+        y2: 0,
+        stop: 0 #6941C6,
+        stop: 0.55 #8B5CF6,
+        stop: 1 #D946A5
+    );
+
+    border-color: #B58AFF;
+}
+
+QPushButton#saveProfileButton:hover {
+    border-color: #27D7F2;
+}
+
+QPushButton#choosePhotoButton,
+QPushButton#changePasswordButton {
+    color: #DFFAFF;
+    background-color: rgba(39, 215, 242, 24);
+    border-color: #238EA4;
+}
+
+QPushButton#choosePhotoButton:hover,
+QPushButton#changePasswordButton:hover {
+    color: #07151A;
+    background-color: #27D7F2;
+}
+
+QPushButton#deleteAccountButton {
+    color: white;
+    background-color: #B72B5B;
+    border-color: #FF6F9E;
+}
+
+QPushButton#deleteAccountButton:hover {
+    background-color: #D33A6C;
+    border-color: #FFB3CC;
+}
+
+QPushButton#closeButton {
+    color: #B9B4CF;
+    background-color: transparent;
+}</string>
+  </property>
   <widget class="QLineEdit" name="fullNameLineEdit">
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>30</y>
+     <y>23</y>
      <width>141</width>
-     <height>24</height>
+     <height>31</height>
     </rect>
    </property>
   </widget>
   <widget class="QLineEdit" name="usernameLineEdit">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>30</y>
+     <x>290</x>
+     <y>23</y>
      <width>131</width>
-     <height>24</height>
+     <height>31</height>
     </rect>
    </property>
   </widget>
@@ -49,9 +412,9 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>220</x>
      <y>30</y>
-     <width>61</width>
+     <width>71</width>
      <height>16</height>
     </rect>
    </property>
@@ -64,7 +427,7 @@
     <rect>
      <x>10</x>
      <y>80</y>
-     <width>81</width>
+     <width>91</width>
      <height>16</height>
     </rect>
    </property>
@@ -76,9 +439,9 @@
    <property name="geometry">
     <rect>
      <x>110</x>
-     <y>80</y>
+     <y>73</y>
      <width>161</width>
-     <height>24</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="echoMode">
@@ -89,9 +452,9 @@
    <property name="geometry">
     <rect>
      <x>280</x>
-     <y>80</y>
-     <width>121</width>
-     <height>24</height>
+     <y>70</y>
+     <width>131</width>
+     <height>36</height>
     </rect>
    </property>
    <property name="text">
@@ -117,10 +480,10 @@
   <widget class="QPushButton" name="choosePhotoButton">
    <property name="geometry">
     <rect>
-     <x>320</x>
-     <y>170</y>
-     <width>81</width>
-     <height>24</height>
+     <x>270</x>
+     <y>180</y>
+     <width>111</width>
+     <height>36</height>
     </rect>
    </property>
    <property name="text">
@@ -133,7 +496,7 @@
      <x>250</x>
      <y>270</y>
      <width>156</width>
-     <height>24</height>
+     <height>36</height>
     </rect>
    </property>
    <property name="text">
@@ -146,7 +509,7 @@
      <x>250</x>
      <y>370</y>
      <width>156</width>
-     <height>24</height>
+     <height>36</height>
     </rect>
    </property>
    <property name="text">
@@ -158,7 +521,7 @@
     <rect>
      <x>10</x>
      <y>240</y>
-     <width>57</width>
+     <width>101</width>
      <height>16</height>
     </rect>
    </property>
@@ -169,10 +532,10 @@
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>170</x>
+     <x>150</x>
      <y>140</y>
-     <width>71</width>
-     <height>16</height>
+     <width>91</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
@@ -195,7 +558,7 @@
      <x>250</x>
      <y>320</y>
      <width>156</width>
-     <height>24</height>
+     <height>36</height>
     </rect>
    </property>
    <property name="text">
@@ -216,6 +579,9 @@
    </property>
    <property name="text">
     <string>TextLabel</string>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
    </property>
    <property name="alignment">
     <set>Qt::AlignmentFlag::AlignCenter</set>

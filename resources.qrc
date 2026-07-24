@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>images/backgrounds/backgraound.jpg</file>
+        <file>images/backgrounds/background (2).jpg</file>
+        <file>images/backgrounds/background (3).jpg</file>
+        <file>images/backgrounds/background (4).jpg</file>
+        <file>images/backgrounds/Purple Plum Lavender Wallpaper.jpg</file>
+        <file>images/backgrounds/303148618691219646.jpg</file>
+        <file>images/backgrounds/AVO.jpg</file>
+    </qresource>
+</RCC>

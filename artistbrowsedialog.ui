@@ -7,11 +7,324 @@
     <x>0</x>
     <y>0</y>
     <width>384</width>
-    <height>333</height>
+    <height>340</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* =========================================
+   SHARED DARK SYNTHWAVE FOUNDATION
+   ========================================= */
+
+QWidget {
+    color: #F7F5FF;
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 10pt;
+}
+
+QDialog,
+QMainWindow {
+    background-color: #080817;
+}
+
+/* ---------- Labels ---------- */
+
+QLabel {
+    color: #F7F5FF;
+    background-color: transparent;
+}
+
+/* ---------- Text inputs ---------- */
+
+QLineEdit,
+QTextEdit,
+QSpinBox,
+QComboBox {
+    color: #F7F5FF;
+    background-color: rgba(17, 19, 39, 235);
+
+    border: 1px solid #37335C;
+    border-radius: 8px;
+
+    padding: 6px 9px;
+
+    selection-background-color: #8B5CF6;
+    selection-color: white;
+}
+
+QLineEdit:hover,
+QTextEdit:hover,
+QSpinBox:hover,
+QComboBox:hover {
+    border-color: #625A92;
+}
+
+QLineEdit:focus,
+QTextEdit:focus,
+QSpinBox:focus,
+QComboBox:focus {
+    background-color: #151831;
+    border: 1px solid #27D7F2;
+}
+
+QLineEdit:disabled,
+QTextEdit:disabled,
+QSpinBox:disabled,
+QComboBox:disabled {
+    color: #686581;
+    background-color: #0E1022;
+    border-color: #25233D;
+}
+
+/* ---------- Combo box ---------- */
+
+QComboBox::drop-down {
+    width: 25px;
+    border: none;
+}
+
+QComboBox QAbstractItemView {
+    color: #F7F5FF;
+    background-color: #14162D;
+
+    border: 1px solid #534B82;
+    border-radius: 7px;
+
+    padding: 4px;
+    outline: none;
+
+    selection-color: white;
+    selection-background-color: #734BD1;
+}
+
+/* ---------- Buttons ---------- */
+
+QPushButton {
+    min-height: 30px;
+
+    color: #F7F5FF;
+    background-color: #1A1D3B;
+
+    border: 1px solid #49446F;
+    border-radius: 8px;
+
+    padding: 2px 12px;
+
+    font-weight: 600;
+}
+
+QPushButton:hover {
+    background-color: #27264D;
+    border-color: #9B7CFF;
+}
+
+QPushButton:pressed {
+    background-color: #342A68;
+    border-color: #F15BB5;
+}
+
+QPushButton:focus {
+    border-color: #27D7F2;
+}
+
+QPushButton:disabled {
+    color: #686581;
+    background-color: #101225;
+    border-color: #282640;
+}
+
+/* ---------- Lists ---------- */
+
+QListWidget {
+    color: #F7F5FF;
+    background-color: rgba(14, 16, 35, 238);
+
+    border: 1px solid #302D52;
+    border-radius: 12px;
+
+    padding: 5px;
+    outline: none;
+}
+
+QListWidget::item {
+    min-height: 34px;
+
+    margin: 2px;
+    padding: 6px 9px;
+
+    border-radius: 8px;
+}
+
+QListWidget::item:hover {
+    background-color: rgba(93, 68, 157, 125);
+}
+
+QListWidget::item:selected {
+    color: white;
+    background-color: #6842C2;
+}
+
+/* ---------- Scrollbars ---------- */
+
+QScrollBar:vertical {
+    width: 10px;
+
+    background-color: transparent;
+
+    margin: 5px 2px 5px 0;
+}
+
+QScrollBar::handle:vertical {
+    min-height: 30px;
+
+    background-color: #4C4477;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #8B5CF6;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical,
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    height: 0;
+    background-color: transparent;
+}
+
+/* ---------- Radio buttons ---------- */
+
+QRadioButton {
+    color: #D8D4EC;
+    spacing: 7px;
+}
+
+QRadioButton::indicator {
+    width: 15px;
+    height: 15px;
+
+    background-color: #111327;
+
+    border: 1px solid #625A92;
+    border-radius: 8px;
+}
+
+QRadioButton::indicator:hover {
+    border-color: #27D7F2;
+}
+
+QRadioButton::indicator:checked {
+    background-color: #F15BB5;
+    border: 4px solid #211B43;
+}
+
+/* ---------- Sliders ---------- */
+
+QSlider::groove:horizontal {
+    height: 6px;
+
+    background-color: #292642;
+    border-radius: 3px;
+}
+
+QSlider::sub-page:horizontal {
+    background: qlineargradient(
+        x1: 0,
+        y1: 0,
+        x2: 1,
+        y2: 0,
+        stop: 0 #27D7F2,
+        stop: 0.52 #8B5CF6,
+        stop: 1 #F15BB5
+    );
+
+    border-radius: 3px;
+}
+
+QSlider::add-page:horizontal {
+    background-color: #292642;
+    border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+    width: 15px;
+
+    margin: -5px 0;
+
+    background-color: #F7F5FF;
+
+    border: 2px solid #A66CFF;
+    border-radius: 8px;
+}
+
+QSlider::handle:horizontal:hover {
+    background-color: #27D7F2;
+    border-color: white;
+}
+
+/* ---------- Tooltips ---------- */
+
+QToolTip {
+    color: white;
+    background-color: #171A35;
+
+    border: 1px solid #8B5CF6;
+    border-radius: 5px;
+
+    padding: 5px;
+}
+
+/* ---------- Message boxes ---------- */
+
+QMessageBox {
+    background-color: #0D0F20;
+}
+
+QMessageBox QLabel {
+    min-width: 260px;
+    color: #F7F5FF;
+}
+
+QMessageBox QPushButton {
+    min-width: 84px;
+}
+/* ARTIST BROWSE PAGE */
+
+QDialog#ArtistBrowseDialog {
+    background: qradialgradient(
+        cx: 0.15,
+        cy: 0.05,
+        radius: 1.1,
+        stop: 0 #17354B,
+        stop: 0.4 #11142D,
+        stop: 1 #080817
+    );
+}
+
+QLabel#artistNameLabel {
+    color: #27D7F2;
+
+    font-family: &quot;Bahnschrift&quot;;
+    font-size: 18pt;
+    font-weight: 700;
+}
+
+QListWidget#albumsListWidget {
+    border-color: #2A7586;
+}
+
+QPushButton#closeButton {
+    color: #B9B4CF;
+    background-color: transparent;
+}
+
+QPushButton#closeButton:hover {
+    color: white;
+    border-color: #27D7F2;
+}</string>
   </property>
   <widget class="QLabel" name="artistNameLabel">
    <property name="geometry">
@@ -42,7 +355,7 @@
      <x>150</x>
      <y>300</y>
      <width>80</width>
-     <height>24</height>
+     <height>36</height>
     </rect>
    </property>
    <property name="text">

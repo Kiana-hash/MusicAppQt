@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.19)
 project(spotifymahroom LANGUAGES CXX)
-
+set(CMAKE_AUTORCC ON)
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets Multimedia)
 
 qt_standard_project_setup()
@@ -47,6 +47,9 @@ qt_add_executable(spotifymahroom
     imageutils.h imageutils.cpp
 
     musicplayerdialog.h musicplayerdialog.cpp musicplayerdialog.ui
+    resources.qrc
+
+
 
 )
 
@@ -69,3 +72,7 @@ qt_generate_deploy_app_script(
     NO_UNSUPPORTED_PLATFORM_ERROR
 )
 install(SCRIPT ${deploy_script})
+
+target_sources( spotifymahroom PRIVATE
+    resources.qrc
+)
