@@ -31,7 +31,7 @@
     <rect>
      <x>20</x>
      <y>50</y>
-     <width>121</width>
+     <width>141</width>
      <height>24</height>
     </rect>
    </property>
@@ -42,7 +42,7 @@
   <widget class="QComboBox" name="genreComboBox">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>170</x>
      <y>50</y>
      <width>91</width>
      <height>24</height>
@@ -52,7 +52,7 @@
   <widget class="QComboBox" name="yearComboBox">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>270</x>
      <y>50</y>
      <width>72</width>
      <height>24</height>
@@ -74,7 +74,7 @@
     <rect>
      <x>330</x>
      <y>80</y>
-     <width>91</width>
+     <width>93</width>
      <height>221</height>
     </rect>
    </property>
@@ -105,9 +105,9 @@
   <widget class="QComboBox" name="sortComboBox">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>350</x>
      <y>50</y>
-     <width>111</width>
+     <width>91</width>
      <height>24</height>
     </rect>
    </property>

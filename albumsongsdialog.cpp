@@ -9,6 +9,7 @@
 #include "editalbumdialog.h"
 #include <set>
 #include "musicqueryservice.h"
+#include "musicplayerdialog.h"
 
 AlbumSongsDialog::AlbumSongsDialog(int artistId,int albumId,
     const QString& albumName,
@@ -78,6 +79,8 @@ void AlbumSongsDialog::refreshSongs()
     {
         songs =MusicQueryService::sortSongsByReleaseYear(songs,false);
     }
+
+    m_displayedSongs = songs;
 
     ui->songsListWidget->clear();
 
@@ -292,3 +295,18 @@ void AlbumSongsDialog::setupFilterOptions()
         ui->yearComboBox->addItem(QString::number(year));
     }
 }
+
+void AlbumSongsDialog::on_songsListWidget_itemDoubleClicked(QListWidgetItem *item)
+{
+    if (item == nullptr)
+    {
+        return;
+    }
+
+    const int songId =item->data(Qt::UserRole).toInt();
+
+    MusicPlayerDialog dialog(m_displayedSongs,songId,this);
+
+    dialog.exec();
+}
+

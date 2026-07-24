@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <vector>
 #include "song.h"
+#include<QListWidgetItem>
 
 class ArtistService;
 class CatalogService;
@@ -41,6 +42,7 @@ private slots:
     void on_editAlbumButton_clicked();
 
     void on_deleteAlbumButton_clicked();
+    void on_songsListWidget_itemDoubleClicked(QListWidgetItem* item);
 
 private:
     void refreshSongs();
@@ -56,6 +58,7 @@ private:
     CatalogService& m_catalogService;
     vector<Song> getBaseSongs() const;
     void setupFilterOptions();
+    vector<Song> m_displayedSongs;
 };
 
 #endif

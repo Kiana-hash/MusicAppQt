@@ -2,10 +2,9 @@
 #define PLAYLISTSONGSDIALOG_H
 
 #include <QDialog>
-
 #include "song.h"
-
 #include <vector>
+#include<QListWidgetItem>
 
 class ListenerService;
 
@@ -36,6 +35,8 @@ private slots:
 
     void on_closeButton_clicked();
 
+    void on_songsListWidget_itemDoubleClicked(QListWidgetItem *item);
+
 private:
     vector<Song> getBaseSongs() const;
 
@@ -51,6 +52,7 @@ private:
     int m_playlistId;
 
     QString m_playlistName;
+    vector<Song> m_displayedSongs;
 
     ListenerService& m_listenerService;
 };

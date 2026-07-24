@@ -5,6 +5,7 @@
 #include "catalogservice.h"
 #include "musicqueryservice.h"
 #include "chooseplaylistdialog.h"
+#include "musicplayerdialog.h"
 
 #include <QComboBox>
 #include <QLineEdit>
@@ -141,6 +142,8 @@ void ListenerSongsDialog::refreshSongs()
         songs =MusicQueryService::sortSongsByReleaseYear(songs,false);
     }
 
+    m_displayedSongs = songs;
+
     ui->songsListWidget->clear();
 
     for (const Song& song : songs)
@@ -249,5 +252,20 @@ void ListenerSongsDialog::on_addToPlaylistButton_clicked()
     {
         updateLikeButton();
     }
+}
+
+
+void ListenerSongsDialog::on_songsListWidget_itemDoubleClicked(QListWidgetItem *item)
+{
+    if (item == nullptr)
+    {
+        return;
+    }
+
+    const int songId =item->data(Qt::UserRole).toInt();
+
+    MusicPlayerDialog dialog(m_displayedSongs,songId,this);
+
+    dialog.exec();
 }
 

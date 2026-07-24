@@ -34,13 +34,14 @@ ArtistDashboard::ArtistDashboard(
 
 void ArtistDashboard::refreshDashboard()
 {
-
     optional<Account> account =m_accountService.getAccount(m_artistId);
 
-    if (account.has_value())
+    if (!account.has_value())
     {
-        ui->welcomeLabel->setText("Welcome, "+ QString::fromStdString(account->getFullName()));
+        return;
     }
+
+    ui->welcomeLabel->setText("Welcome, "+ QString::fromStdString(account->getFullName()));
 
     ImageUtils::displayImage(ui->profilePhotoLabel,QString::fromStdString(account->getProfilePhotoPath()));
 
@@ -50,8 +51,8 @@ void ArtistDashboard::refreshDashboard()
 
     for (const Album& album : albums)
     {
-        QListWidgetItem* item =new QListWidgetItem(QIcon(QString::fromStdString(album.getCoverPath())),
-                QString::fromStdString(album.getName()));
+        QListWidgetItem* item =new QListWidgetItem(QIcon(QString::fromStdString(album.getCoverPath())),QString::fromStdString(album.getName()));
+
         item->setData(Qt::UserRole,album.getId());
         ui->albumsListWidget->addItem(item);
     }
@@ -60,10 +61,9 @@ void ArtistDashboard::refreshDashboard()
 
     if (!singles.empty())
     {
-        QListWidgetItem* singlesItem = new QListWidgetItem("Singles");
+        QListWidgetItem* singlesItem =new QListWidgetItem("Singles");
 
         singlesItem->setData(Qt::UserRole,0);
-
         ui->albumsListWidget->addItem(singlesItem);
     }
 }
@@ -77,7 +77,6 @@ void ArtistDashboard::on_logoutButton_clicked()
     accept();
 }
 
-
 void ArtistDashboard::on_albumsListWidget_itemDoubleClicked(QListWidgetItem *item)
 {
     if (item == nullptr)
@@ -89,14 +88,7 @@ void ArtistDashboard::on_albumsListWidget_itemDoubleClicked(QListWidgetItem *ite
 
     const QString albumName =item->text();
 
-    AlbumSongsDialog dialog(
-        m_artistId,
-        albumId,
-        albumName,
-        m_artistService,
-        m_catalogService,
-        this
-        );
+    AlbumSongsDialog dialog(m_artistId,albumId,albumName,m_artistService,m_catalogService,this);
 
     dialog.exec();
 

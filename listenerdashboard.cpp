@@ -41,17 +41,18 @@ void ListenerDashboard::refreshDashboard()
 
     optional<Account> account =m_accountService.getAccount(m_listenerId);
 
-    if (account.has_value())
+    if (!account.has_value())
     {
-        ui->welcomeLabel->setText("Welcome, "+ QString::fromStdString(account->getFullName()));
+        return;
     }
+
+    ui->welcomeLabel->setText("Welcome, "+ QString::fromStdString(account->getFullName()));
 
     ImageUtils::displayImage(ui->profilePhotoLabel,QString::fromStdString(account->getProfilePhotoPath()));
 
     ui->artistsListWidget->clear();
 
     vector<Account> artists =m_catalogService.getAllArtists();
-
 
     for (const Account& artist : artists)
     {

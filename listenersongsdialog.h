@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "song.h"
 #include <vector>
+#include <QListWidgetItem>
 
 class ListenerService;
 class CatalogService;
@@ -18,12 +19,10 @@ class ListenerSongsDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit ListenerSongsDialog(int listenerId,int artistId,int albumId,
-        const QString& title,
+    explicit ListenerSongsDialog(int listenerId,int artistId,int albumId, const QString& title,
         ListenerService& listenerService,
-        CatalogService& catalogService,
-        QWidget* parent = nullptr
-        );
+         CatalogService& catalogService,
+                QWidget* parent = nullptr);
 
     ~ListenerSongsDialog();
 
@@ -33,6 +32,8 @@ private slots:
     void on_closeButton_clicked();
 
     void on_addToPlaylistButton_clicked();
+
+    void on_songsListWidget_itemDoubleClicked(QListWidgetItem *item);
 
 private:
     vector<Song> getBaseSongs() const;
@@ -53,6 +54,7 @@ private:
 
     ListenerService& m_listenerService;
     CatalogService& m_catalogService;
+    vector<Song> m_displayedSongs;
 };
 
 #endif
