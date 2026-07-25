@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>720</width>
+    <width>748</width>
     <height>730</height>
    </rect>
   </property>
@@ -764,25 +764,6 @@ QToolTip {
     padding: 5px;
 }</string>
   </property>
-  <widget class="QLabel" name="profilePhotoLabel">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>10</y>
-     <width>151</width>
-     <height>111</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>TextLabel</string>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignmentFlag::AlignCenter</set>
-   </property>
-  </widget>
   <widget class="QFrame" name="sidebarFrame">
    <property name="geometry">
     <rect>
@@ -892,9 +873,9 @@ QToolTip {
   <widget class="QFrame" name="mainFrame">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>219</x>
      <y>0</y>
-     <width>501</width>
+     <width>601</width>
      <height>761</height>
     </rect>
    </property>
@@ -934,8 +915,8 @@ QToolTip {
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>129</y>
-      <width>511</width>
+      <y>130</y>
+      <width>521</width>
       <height>121</height>
      </rect>
     </property>
@@ -948,7 +929,7 @@ QToolTip {
     <widget class="QFrame" name="singleStatFrame">
      <property name="geometry">
       <rect>
-       <x>260</x>
+       <x>290</x>
        <y>10</y>
        <width>161</width>
        <height>101</height>
@@ -990,7 +971,7 @@ QToolTip {
     <widget class="QFrame" name="albumStatFrame">
      <property name="geometry">
       <rect>
-       <x>40</x>
+       <x>60</x>
        <y>10</y>
        <width>171</width>
        <height>101</height>
@@ -1035,7 +1016,7 @@ QToolTip {
      <rect>
       <x>0</x>
       <y>250</y>
-      <width>501</width>
+      <width>521</width>
       <height>51</height>
      </rect>
     </property>
@@ -1070,7 +1051,7 @@ QToolTip {
      <rect>
       <x>0</x>
       <y>300</y>
-      <width>501</width>
+      <width>521</width>
       <height>51</height>
      </rect>
     </property>
@@ -1112,7 +1093,7 @@ QToolTip {
      <rect>
       <x>10</x>
       <y>360</y>
-      <width>141</width>
+      <width>221</width>
       <height>21</height>
      </rect>
     </property>
@@ -1125,7 +1106,7 @@ QToolTip {
      <rect>
       <x>0</x>
       <y>390</y>
-      <width>501</width>
+      <width>521</width>
       <height>191</height>
      </rect>
     </property>
@@ -1180,7 +1161,7 @@ QToolTip {
      <rect>
       <x>10</x>
       <y>610</y>
-      <width>481</width>
+      <width>511</width>
       <height>111</height>
      </rect>
     </property>
@@ -1203,14 +1184,33 @@ QToolTip {
      <enum>QListView::ViewMode::IconMode</enum>
     </property>
    </widget>
+   <widget class="QLabel" name="profilePhotoLabel">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>141</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
   <widget class="QFrame" name="headerFrame">
    <property name="geometry">
     <rect>
      <x>230</x>
-     <y>-1</y>
-     <width>491</width>
-     <height>131</height>
+     <y>9</y>
+     <width>511</width>
+     <height>121</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -1222,7 +1222,6 @@ QToolTip {
   </widget>
   <zorder>headerFrame</zorder>
   <zorder>mainFrame</zorder>
-  <zorder>profilePhotoLabel</zorder>
   <zorder>sidebarFrame</zorder>
  </widget>
  <resources/>
