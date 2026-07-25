@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QListWidgetItem>
+#include <vector>
+#include "song.h"
 
 class ArtistService;
 class CatalogService;
@@ -38,6 +40,7 @@ private slots:
     void on_createSingleButton_clicked();
 
     void on_accountButton_clicked();
+    void on_songsTableWidget_cellDoubleClicked(int row,int column);
 
 private:
     Ui::ArtistDashboard* ui;
@@ -48,6 +51,14 @@ private:
     ArtistService& m_artistService;
     CatalogService& m_catalogService;
     AccountService& m_accountService;
+
+    void setupFilterOptions();
+
+    void refreshSongs();
+
+    vector<Song> getArtistSongs() const;
+
+    vector<Song> m_displayedSongs;
 };
 
 #endif

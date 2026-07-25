@@ -695,7 +695,7 @@ QToolTip {
     <rect>
      <x>190</x>
      <y>580</y>
-     <width>471</width>
+     <width>491</width>
      <height>141</height>
     </rect>
    </property>
@@ -726,7 +726,7 @@ QToolTip {
     <rect>
      <x>180</x>
      <y>280</y>
-     <width>501</width>
+     <width>511</width>
      <height>221</height>
     </rect>
    </property>
@@ -921,63 +921,13 @@ QToolTip {
     <rect>
      <x>260</x>
      <y>140</y>
-     <width>421</width>
-     <height>41</height>
+     <width>431</width>
+     <height>36</height>
     </rect>
    </property>
    <property name="placeholderText">
     <string>Search Songs. . . </string>
    </property>
-  </widget>
-  <widget class="QComboBox" name="genreComboBox">
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>191</y>
-     <width>161</width>
-     <height>41</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="yearComboBox">
-   <property name="geometry">
-    <rect>
-     <x>400</x>
-     <y>191</y>
-     <width>121</width>
-     <height>41</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="sortComboBox">
-   <property name="geometry">
-    <rect>
-     <x>540</x>
-     <y>191</y>
-     <width>131</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <item>
-    <property name="text">
-     <string>Name A-Z</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Name Z-A</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Year Oldest-Newest</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Year Newest-Oldest</string>
-    </property>
-   </item>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
@@ -1037,19 +987,59 @@ QToolTip {
     <iconset theme="QIcon::ThemeIcon::ListAdd"/>
    </property>
   </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>190</y>
+     <width>521</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QComboBox" name="genreComboBox"/>
+    </item>
+    <item>
+     <widget class="QComboBox" name="yearComboBox"/>
+    </item>
+    <item>
+     <widget class="QComboBox" name="sortComboBox">
+      <item>
+       <property name="text">
+        <string>Name A-Z</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Name Z-A</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Year Oldest-Newest</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Year Newest-Oldest</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+   </layout>
+  </widget>
   <zorder>frame</zorder>
   <zorder>sidebarFrame</zorder>
   <zorder>label</zorder>
   <zorder>artistsListWidget</zorder>
   <zorder>songsTableWidget</zorder>
   <zorder>searchLineEdit</zorder>
-  <zorder>genreComboBox</zorder>
-  <zorder>yearComboBox</zorder>
-  <zorder>sortComboBox</zorder>
   <zorder>pushButton</zorder>
   <zorder>songsTitleLabel</zorder>
   <zorder>likeButton</zorder>
   <zorder>addToPlaylistButton</zorder>
+  <zorder>horizontalLayoutWidget</zorder>
  </widget>
  <resources/>
  <connections/>

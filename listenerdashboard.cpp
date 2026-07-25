@@ -139,9 +139,9 @@ void ListenerDashboard::setupFilterOptions()
 
     ui->yearComboBox->addItem("All Years");
 
-    for (auto iterator = years.rbegin();iterator != years.rend();++iterator)
+    for (int year : years)
     {
-        ui->yearComboBox->addItem(QString::number(*iterator));
+        ui->yearComboBox->addItem(QString::number(year));
     }
 
     ui->sortComboBox->clear();

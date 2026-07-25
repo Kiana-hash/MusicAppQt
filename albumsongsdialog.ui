@@ -385,7 +385,7 @@ QPushButton#closeButton {
     <rect>
      <x>430</x>
      <y>90</y>
-     <width>160</width>
+     <width>181</width>
      <height>301</height>
     </rect>
    </property>
