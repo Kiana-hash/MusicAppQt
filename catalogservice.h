@@ -23,6 +23,7 @@ public:
 
     optional<Song> getSong(int songId) const;
     optional<Album> getAlbum(int albumId) const;
+    vector<Song> getAllSongs() const;
 
 private:
     ArtistRepository& m_artistRepository;

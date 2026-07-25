@@ -22,6 +22,7 @@ public:
    vector<Song> getByArtist(int artistId) const;
    vector<Song> getByPlaylist(int playlistId) const;
    vector<Song> getByLikedSongs(int listenerId) const;
+   const vector<Song>& getAll() const;
 
 private:
     int generateNextId() const;

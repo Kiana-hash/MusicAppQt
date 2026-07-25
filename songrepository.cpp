@@ -191,3 +191,8 @@ vector<Song>  SongRepository::getByLikedSongs(int listenerId) const
 
     return result;
 }
+
+const vector<Song>& SongRepository::getAll() const
+{
+    return m_data.songs;
+}

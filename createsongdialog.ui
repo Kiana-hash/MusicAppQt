@@ -357,9 +357,9 @@ QPushButton#cancelButton {
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>50</y>
+     <y>43</y>
      <width>113</width>
-     <height>24</height>
+     <height>31</height>
     </rect>
    </property>
   </widget>
@@ -383,9 +383,9 @@ QPushButton#cancelButton {
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>100</y>
+     <y>93</y>
      <width>113</width>
-     <height>24</height>
+     <height>31</height>
     </rect>
    </property>
   </widget>

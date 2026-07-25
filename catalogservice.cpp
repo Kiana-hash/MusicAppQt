@@ -72,3 +72,10 @@ optional<Album> CatalogService::getAlbum(int albumId) const
 {
     return m_albumRepository.search(albumId);
 }
+
+vector<Song> CatalogService::getAllSongs() const
+{
+    vector<Song> songs = m_songRepository.getAll();
+
+    return MusicQueryService::sortSongsByName(songs);
+}

@@ -409,9 +409,9 @@ QPushButton#closeButton {
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>80</y>
-     <width>114</width>
+     <x>360</x>
+     <y>90</y>
+     <width>141</width>
      <height>221</height>
     </rect>
    </property>

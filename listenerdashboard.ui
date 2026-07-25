@@ -6,399 +6,682 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>453</width>
-    <height>409</height>
+    <width>701</width>
+    <height>737</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">/* =========================================
-   SHARED DARK SYNTHWAVE FOUNDATION
-   ========================================= */
+   <string notr="true">
+QDialog#ListenerDashboard {
+    background: qradialgradient(
+        cx: 0.72,
+        cy: 0.08,
+        radius: 1.15,
+        stop: 0 #351968,
+        stop: 0.25 #19183D,
+        stop: 0.55 #10122B,
+        stop: 1 #070815
+    );
 
-QWidget {
     color: #F7F5FF;
+
     font-family: &quot;Segoe UI&quot;;
     font-size: 10pt;
 }
 
-QDialog,
-QMainWindow {
-    background-color: #080817;
-}
-
-/* ---------- Labels ---------- */
+/* ===========================
+   GENERAL TEXT
+   =========================== */
 
 QLabel {
     color: #F7F5FF;
-    background-color: transparent;
+    background: transparent;
 }
 
-/* ---------- Text inputs ---------- */
 
-QLineEdit,
-QTextEdit,
-QSpinBox,
-QComboBox {
-    color: #F7F5FF;
-    background-color: rgba(17, 19, 39, 235);
+QFrame#sidebarFrame {
+    background: qlineargradient(
+        x1: 0,
+        y1: 0,
+        x2: 0,
+        y2: 1,
+        stop: 0 #12122C,
+        stop: 0.5 #0C0D21,
+        stop: 1 #080916
+    );
 
-    border: 1px solid #37335C;
+    border: none;
+    border-right: 1px solid #3A2E60;
+}
+
+
+QLabel#appTitleLabel {
+    color: #FFFFFF;
+
+    font-family: &quot;Bahnschrift&quot;;
+    font-size: 20pt;
+    font-weight: 700;
+
+    padding: 4px;
+}
+
+
+QLabel#libraryLabel,
+QLabel#playlistsTitleLabel {
+    color: #87829F;
+
+    font-family: &quot;Bahnschrift&quot;;
+    font-size: 9pt;
+    font-weight: 600;
+}
+
+
+QListWidget#playlistsListWidget {
+    color: #DCD8ED;
+
+    background-color: transparent;
+
+    border: none;
+
+    padding: 3px;
+
+    outline: none;
+}
+
+
+QListWidget#playlistsListWidget::item {
+    min-height: 31px;
+
+    padding: 5px 8px;
+    margin: 2px 1px;
+
     border-radius: 8px;
+}
 
-    padding: 6px 9px;
+
+QListWidget#playlistsListWidget::item:hover {
+    color: #FFFFFF;
+
+    background-color: rgba(139, 92, 246, 60);
+}
+
+
+QListWidget#playlistsListWidget::item:selected {
+    color: #FFFFFF;
+
+    background: qlineargradient(
+        x1: 0,
+        y1: 0,
+        x2: 1,
+        y2: 0,
+        stop: 0 rgba(120, 76, 230, 160),
+        stop: 1 rgba(241, 91, 181, 100)
+    );
+}
+
+
+QPushButton#createPlaylistButton {
+    color: #EFEAFF;
+
+    background-color: rgba(139, 92, 246, 28);
+
+    border: 1px solid #6546A7;
+    border-radius: 9px;
+
+    min-height: 31px;
+
+    padding: 4px 11px;
+
+    font-weight: 600;
+}
+
+QPushButton#createPlaylistButton:hover {
+    color: #FFFFFF;
+
+    background-color: #6941C6;
+
+    border-color: #B995FF;
+}
+
+
+QPushButton#createPlaylistButton:pressed {
+    background-color: #51309E;
+
+    border-color: #F15BB5;
+}
+
+QPushButton#accountButton {
+    color: #CFFAFF;
+
+    background-color: rgba(39, 215, 242, 22);
+
+    border: 1px solid #267D90;
+    border-radius: 9px;
+
+    min-height: 31px;
+
+    font-weight: 600;
+}
+
+
+QPushButton#accountButton:hover {
+    color: #061318;
+
+    background-color: #27D7F2;
+
+    border-color: #A3F5FF;
+}
+
+
+QPushButton#logoutButton {
+    color: #FF9EC0;
+
+    background-color: transparent;
+
+    border: 1px solid #6D2947;
+    border-radius: 9px;
+
+    min-height: 31px;
+
+    font-weight: 600;
+}
+
+
+QPushButton#logoutButton:hover {
+    color: #FFFFFF;
+
+    background-color: #B72B5B;
+
+    border-color: #FF7DAA;
+}
+
+
+QFrame#mainFrame {
+    background-color: transparent;
+
+    border: none;
+}
+
+QFrame#headerFrame {
+    background-color: rgba(17, 19, 42, 165);
+
+    border: 1px solid rgba(139, 92, 246, 55);
+    border-radius: 16px;
+}
+
+
+QLabel#welcomeLabel {
+    color: #FFFFFF;
+
+    font-family: &quot;Bahnschrift&quot;;
+    font-size: 20pt;
+    font-weight: 700;
+}
+
+
+QLabel#profilePhotoLabel {
+    color: #9A95B2;
+
+    background: qradialgradient(
+        cx: 0.5,
+        cy: 0.35,
+        radius: 0.8,
+        stop: 0 #2C2851,
+        stop: 1 #121329
+    );
+
+    border: 2px solid #A56CFF;
+    border-radius: 25px;
+}
+
+
+QLineEdit#searchLineEdit {
+    color: #FFFFFF;
+
+    background-color: rgba(13, 15, 34, 230);
+
+    border: 1px solid #504873;
+    border-radius: 13px;
+
+    min-height: 34px;
+
+    padding-left: 13px;
+    padding-right: 13px;
+
+    font-size: 10pt;
 
     selection-background-color: #8B5CF6;
-    selection-color: white;
 }
 
-QLineEdit:hover,
-QTextEdit:hover,
-QSpinBox:hover,
-QComboBox:hover {
-    border-color: #625A92;
+
+QLineEdit#searchLineEdit:hover {
+    border-color: #8068BE;
 }
 
-QLineEdit:focus,
-QTextEdit:focus,
-QSpinBox:focus,
-QComboBox:focus {
-    background-color: #151831;
+QLineEdit#searchLineEdit:focus {
+    background-color: #141730;
+
     border: 1px solid #27D7F2;
 }
 
-QLineEdit:disabled,
-QTextEdit:disabled,
-QSpinBox:disabled,
-QComboBox:disabled {
-    color: #686581;
-    background-color: #0E1022;
-    border-color: #25233D;
+
+QComboBox#genreComboBox,
+QComboBox#yearComboBox,
+QComboBox#sortComboBox {
+    color: #E9E6F5;
+
+    background-color: #16172F;
+
+    border: 1px solid #474264;
+    border-radius: 9px;
+
+    min-height: 30px;
+
+    padding-left: 9px;
+    padding-right: 6px;
 }
 
-/* ---------- Combo box ---------- */
+
+QComboBox#genreComboBox:hover,
+QComboBox#yearComboBox:hover,
+QComboBox#sortComboBox:hover {
+    background-color: #201D40;
+
+    border-color: #9C78F5;
+}
+
+QComboBox#genreComboBox:focus,
+QComboBox#yearComboBox:focus,
+QComboBox#sortComboBox:focus {
+    border-color: #27D7F2;
+}
 
 QComboBox::drop-down {
     width: 25px;
+
     border: none;
 }
 
 QComboBox QAbstractItemView {
     color: #F7F5FF;
-    background-color: #14162D;
 
-    border: 1px solid #534B82;
-    border-radius: 7px;
+    background-color: #121329;
 
-    padding: 4px;
-    outline: none;
-
-    selection-color: white;
-    selection-background-color: #734BD1;
-}
-
-/* ---------- Buttons ---------- */
-
-QPushButton {
-    min-height: 30px;
-
-    color: #F7F5FF;
-    background-color: #1A1D3B;
-
-    border: 1px solid #49446F;
+    border: 1px solid #644D91;
     border-radius: 8px;
 
-    padding: 2px 12px;
+    padding: 4px;
+
+    outline: none;
+
+    selection-background-color: #7044C9;
+    selection-color: #FFFFFF;
+}
+
+QLabel#songsTitleLabel,
+QLabel#artistsTitleLabel {
+    color: #FFFFFF;
+
+    font-family: &quot;Bahnschrift&quot;;
+    font-size: 14pt;
+    font-weight: 700;
+}
+
+
+QTableWidget#songsTableWidget {
+    color: #EAE7F4;
+
+    background-color: rgba(11, 13, 30, 220);
+
+    alternate-background-color: rgba(24, 22, 49, 190);
+
+    border: 1px solid #332D52;
+    border-radius: 13px;
+
+    gridline-color: transparent;
+
+    padding: 5px;
+
+    outline: none;
+
+    selection-background-color: transparent;
+}
+
+
+
+
+QTableWidget#songsTableWidget::item {
+    padding: 7px;
+
+    border: none;
+}
+
+
+/* Hovered track */
+
+QTableWidget#songsTableWidget::item:hover {
+    background-color: rgba(109, 76, 183, 70);
+
+    border-radius: 7px;
+}
+
+
+/* Selected track */
+QTableWidget#songsTableWidget::item:selected {
+    color: #FFFFFF;
+
+    background: qlineargradient(
+        x1: 0,
+        y1: 0,
+        x2: 1,
+        y2: 0,
+        stop: 0 rgba(105, 65, 198, 180),
+        stop: 0.55 rgba(139, 92, 246, 145),
+        stop: 1 rgba(241, 91, 181, 100)
+    );
+}
+
+QHeaderView {
+    background-color: transparent;
+}
+
+
+QHeaderView::section {
+    color: #A8A3BD;
+
+    background-color: #111228;
+
+    border: none;
+    border-bottom: 1px solid #383252;
+
+    padding: 8px;
+
+    font-family: &quot;Segoe UI&quot;;
+    font-size: 9pt;
+    font-weight: 600;
+}
+
+
+QHeaderView::section:first {
+    border-top-left-radius: 7px;
+}
+
+
+QHeaderView::section:last {
+    border-top-right-radius: 7px;
+}
+
+
+QTableCornerButton::section {
+    background-color: #111228;
+
+    border: none;
+}
+
+
+QPushButton#likeButton {
+    color: #FFD2E5;
+
+    background-color: rgba(241, 91, 181, 30);
+
+    border: 1px solid #A6437D;
+    border-radius: 9px;
+
+    min-height: 31px;
+
+    padding: 3px 14px;
 
     font-weight: 600;
 }
 
-QPushButton:hover {
-    background-color: #27264D;
-    border-color: #9B7CFF;
+
+QPushButton#likeButton:hover {
+    color: #FFFFFF;
+
+    background-color: #D946A5;
+
+    border-color: #FF9DCF;
 }
 
-QPushButton:pressed {
-    background-color: #342A68;
-    border-color: #F15BB5;
+
+QPushButton#likeButton:pressed {
+    background-color: #AA347F;
 }
 
-QPushButton:focus {
+
+QPushButton#likeButton:disabled {
+    color: #716D83;
+
+    background-color: #121326;
+
+    border-color: #302D42;
+}
+
+QPushButton#addToPlaylistButton {
+    color: #FFFFFF;
+
+    background: qlineargradient(
+        x1: 0,
+        y1: 0,
+        x2: 1,
+        y2: 0,
+        stop: 0 #7047CD,
+        stop: 0.5 #8B5CF6,
+        stop: 1 #C84AAB
+    );
+
+    border: 1px solid #B792FF;
+    border-radius: 9px;
+
+    min-height: 31px;
+
+    padding: 3px 15px;
+
+    font-weight: 600;
+}
+
+
+QPushButton#addToPlaylistButton:hover {
+    background: qlineargradient(
+        x1: 0,
+        y1: 0,
+        x2: 1,
+        y2: 0,
+        stop: 0 #845BE2,
+        stop: 0.5 #A478FF,
+        stop: 1 #EE5CB9
+    );
+
     border-color: #27D7F2;
 }
 
-QPushButton:disabled {
-    color: #686581;
-    background-color: #101225;
-    border-color: #282640;
+
+QPushButton#addToPlaylistButton:pressed {
+    background-color: #6841BC;
 }
 
-/* ---------- Lists ---------- */
 
-QListWidget {
-    color: #F7F5FF;
-    background-color: rgba(14, 16, 35, 238);
+QPushButton#addToPlaylistButton:disabled {
+    color: #716D83;
 
-    border: 1px solid #302D52;
-    border-radius: 12px;
+    background: #121326;
 
-    padding: 5px;
+    border-color: #302D42;
+}
+
+
+QListWidget#artistsListWidget {
+    color: #F3F0FA;
+
+    background-color: transparent;
+
+    border: none;
+
+    padding: 4px;
+
     outline: none;
 }
 
-QListWidget::item {
-    min-height: 34px;
 
-    margin: 2px;
-    padding: 6px 9px;
+QListWidget#artistsListWidget::item {
+    color: #EDE9FA;
 
-    border-radius: 8px;
+    background-color: rgba(21, 23, 49, 210);
+
+    border: 1px solid rgba(122, 90, 183, 85);
+    border-radius: 12px;
+
+    padding: 8px;
+    margin: 4px;
 }
 
-QListWidget::item:hover {
-    background-color: rgba(93, 68, 157, 125);
+
+QListWidget#artistsListWidget::item:hover {
+    color: #FFFFFF;
+
+    background-color: rgba(94, 62, 153, 215);
+
+    border-color: #B187FF;
 }
 
-QListWidget::item:selected {
-    color: white;
-    background-color: #6842C2;
+
+QListWidget#artistsListWidget::item:selected {
+    color: #FFFFFF;
+
+    background: qlineargradient(
+        x1: 0,
+        y1: 0,
+        x2: 1,
+        y2: 1,
+        stop: 0 #5E3CA8,
+        stop: 1 #A33889
+    );
+
+    border-color: #27D7F2;
 }
 
-/* ---------- Scrollbars ---------- */
+
+QPushButton {
+    color: #F7F5FF;
+
+    background-color: #1A1C38;
+
+    border: 1px solid #45405F;
+    border-radius: 9px;
+
+    min-height: 30px;
+
+    padding: 3px 12px;
+
+    font-family: &quot;Segoe UI&quot;;
+    font-weight: 600;
+}
+
+
+QPushButton:hover {
+    background-color: #29254D;
+
+    border-color: #9875E9;
+}
+
+
+QPushButton:pressed {
+    background-color: #362C66;
+
+    border-color: #F15BB5;
+}
+
 
 QScrollBar:vertical {
     width: 10px;
 
     background-color: transparent;
 
-    margin: 5px 2px 5px 0;
+    margin: 3px 2px 3px 0;
 }
 
-QScrollBar::handle:vertical {
-    min-height: 30px;
 
-    background-color: #4C4477;
+QScrollBar::handle:vertical {
+    min-height: 32px;
+
+    background: qlineargradient(
+        x1: 0,
+        y1: 0,
+        x2: 0,
+        y2: 1,
+        stop: 0 #7657B9,
+        stop: 1 #4A3C77
+    );
+
     border-radius: 5px;
 }
 
+
 QScrollBar::handle:vertical:hover {
+    background-color: #9B6EEC;
+}
+
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: transparent;
+}
+
+
+QScrollBar:horizontal {
+    height: 9px;
+
+    background-color: transparent;
+
+    margin: 2px;
+}
+
+
+QScrollBar::handle:horizontal {
+    min-width: 30px;
+
+    background-color: #4C4175;
+
+    border-radius: 4px;
+}
+
+
+QScrollBar::handle:horizontal:hover {
     background-color: #8B5CF6;
 }
 
-QScrollBar::add-line:vertical,
-QScrollBar::sub-line:vertical,
-QScrollBar::add-page:vertical,
-QScrollBar::sub-page:vertical {
-    height: 0;
-    background-color: transparent;
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    width: 0;
 }
 
-/* ---------- Radio buttons ---------- */
-
-QRadioButton {
-    color: #D8D4EC;
-    spacing: 7px;
-}
-
-QRadioButton::indicator {
-    width: 15px;
-    height: 15px;
-
-    background-color: #111327;
-
-    border: 1px solid #625A92;
-    border-radius: 8px;
-}
-
-QRadioButton::indicator:hover {
-    border-color: #27D7F2;
-}
-
-QRadioButton::indicator:checked {
-    background-color: #F15BB5;
-    border: 4px solid #211B43;
-}
-
-/* ---------- Sliders ---------- */
-
-QSlider::groove:horizontal {
-    height: 6px;
-
-    background-color: #292642;
-    border-radius: 3px;
-}
-
-QSlider::sub-page:horizontal {
-    background: qlineargradient(
-        x1: 0,
-        y1: 0,
-        x2: 1,
-        y2: 0,
-        stop: 0 #27D7F2,
-        stop: 0.52 #8B5CF6,
-        stop: 1 #F15BB5
-    );
-
-    border-radius: 3px;
-}
-
-QSlider::add-page:horizontal {
-    background-color: #292642;
-    border-radius: 3px;
-}
-
-QSlider::handle:horizontal {
-    width: 15px;
-
-    margin: -5px 0;
-
-    background-color: #F7F5FF;
-
-    border: 2px solid #A66CFF;
-    border-radius: 8px;
-}
-
-QSlider::handle:horizontal:hover {
-    background-color: #27D7F2;
-    border-color: white;
-}
-
-/* ---------- Tooltips ---------- */
 
 QToolTip {
-    color: white;
-    background-color: #171A35;
+    color: #FFFFFF;
 
-    border: 1px solid #8B5CF6;
-    border-radius: 5px;
+    background-color: #18182F;
+
+    border: 1px solid #9C77F0;
+    border-radius: 6px;
 
     padding: 5px;
-}
-
-/* ---------- Message boxes ---------- */
-
-QMessageBox {
-    background-color: #0D0F20;
-}
-
-QMessageBox QLabel {
-    min-width: 260px;
-    color: #F7F5FF;
-}
-
-QMessageBox QPushButton {
-    min-width: 84px;
-}
-
-/* LISTENER DASHBOARD */
-
-QDialog#ListenerDashboard {
-    background: qradialgradient(
-        cx: 0.1,
-        cy: 0.05,
-        radius: 1.15,
-        stop: 0 #173550,
-        stop: 0.35 #11142D,
-        stop: 1 #080817
-    );
-}
-
-QLabel#welcomeLabel {
-    color: #F7F5FF;
-
-    font-family: &quot;Bahnschrift&quot;;
-    font-size: 18pt;
-    font-weight: 700;
-}
-
-QLabel#label,
-QLabel#label_2 {
-    color: #C9C4DC;
-
-    font-family: &quot;Bahnschrift&quot;;
-    font-size: 11pt;
-    font-weight: 700;
-}
-
-QLabel#profilePhotoLabel {
-    color: #8D87A6;
-    background-color: #15172F;
-
-    border: 2px solid #27D7F2;
-    border-radius: 14px;
-}
-
-QListWidget#artistsListWidget {
-    border-color: #2D7584;
-}
-
-QListWidget#playlistsListWidget {
-    border-color: #624A92;
-}
-
-QPushButton#createPlaylistButton {
-    color: white;
-
-    background: qlineargradient(
-        x1: 0,
-        y1: 0,
-        x2: 1,
-        y2: 0,
-        stop: 0 #6941C6,
-        stop: 0.55 #8B5CF6,
-        stop: 1 #D946A5
-    );
-
-    border-color: #B58AFF;
-}
-
-QPushButton#createPlaylistButton:hover {
-    border-color: #27D7F2;
-}
-
-QPushButton#accountButton {
-    color: #DFFAFF;
-    background-color: rgba(39, 215, 242, 20);
-    border-color: #267F91;
-}
-
-QPushButton#accountButton:hover {
-    color: #07151A;
-    background-color: #27D7F2;
-}
-
-QPushButton#logoutButton {
-    color: #FF8EB4;
-    background-color: rgba(183, 43, 91, 35);
-    border-color: #A63A61;
-}
-
-QPushButton#logoutButton:hover {
-    color: white;
-    background-color: #B72B5B;
-    border-color: #FF8EB4;
 }</string>
   </property>
-  <widget class="QLabel" name="welcomeLabel">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>30</y>
-     <width>291</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>TextLabel</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>110</y>
+     <x>200</x>
+     <y>550</y>
      <width>51</width>
      <height>20</height>
     </rect>
@@ -410,88 +693,363 @@ QPushButton#logoutButton:hover {
   <widget class="QListWidget" name="artistsListWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>130</y>
-     <width>201</width>
-     <height>211</height>
+     <x>190</x>
+     <y>580</y>
+     <width>471</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="editTriggers">
+    <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>60</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="resizeMode">
+    <enum>QListView::ResizeMode::Adjust</enum>
+   </property>
+   <property name="spacing">
+    <number>8</number>
+   </property>
+   <property name="viewMode">
+    <enum>QListView::ViewMode::IconMode</enum>
+   </property>
+   <property name="wordWrap">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="songsTableWidget">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>280</y>
+     <width>501</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <property name="alternatingRowColors">
+    <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>40</width>
+     <height>40</height>
+    </size>
+   </property>
+   <property name="showGrid">
+    <bool>false</bool>
+   </property>
+   <column>
+    <property name="text">
+     <string>Title</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string> Artist</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string> Album</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Genre</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Year</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QFrame" name="sidebarFrame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>181</width>
+     <height>751</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Shape::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Shadow::Raised</enum>
+   </property>
+   <widget class="QLabel" name="libraryLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>YOUR LIBRARY</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="playlistsListWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>130</y>
+      <width>161</width>
+      <height>351</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="logoutButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>680</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Logout</string>
+    </property>
+    <property name="icon">
+     <iconset theme="QIcon::ThemeIcon::EditClear"/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="accountButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>610</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Account</string>
+    </property>
+    <property name="icon">
+     <iconset theme="QIcon::ThemeIcon::UserAvailable"/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="createPlaylistButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>540</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Create Playlist</string>
+    </property>
+    <property name="icon">
+     <iconset theme="QIcon::ThemeIcon::ListAdd"/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Your Playlists:</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>-1</y>
+     <width>521</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Shape::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Shadow::Raised</enum>
+   </property>
+   <widget class="QLabel" name="profilePhotoLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>141</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="welcomeLabel">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>40</y>
+      <width>291</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLineEdit" name="searchLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>140</y>
+     <width>421</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>Search Songs. . . </string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="genreComboBox">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>191</y>
+     <width>161</width>
+     <height>41</height>
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QComboBox" name="yearComboBox">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>110</y>
-     <width>101</width>
+     <x>400</x>
+     <y>191</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="sortComboBox">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>191</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Name A-Z</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Name Z-A</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Year Oldest-Newest</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Year Newest-Oldest</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>140</y>
+     <width>41</width>
+     <height>38</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::EditFind"/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="songsTitleLabel">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>250</y>
+     <width>111</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>My Playlists:</string>
+    <string>ALL SONGS</string>
    </property>
   </widget>
-  <widget class="QListWidget" name="playlistsListWidget">
+  <widget class="QPushButton" name="likeButton">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>130</y>
-     <width>211</width>
-     <height>211</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QWidget" name="horizontalLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>340</y>
-     <width>401</width>
-     <height>80</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QPushButton" name="createPlaylistButton">
-      <property name="text">
-       <string>Create Playlist</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="accountButton">
-      <property name="text">
-       <string>Account</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="logoutButton">
-      <property name="text">
-       <string>Logout</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QLabel" name="profilePhotoLabel">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
+     <x>250</x>
+     <y>510</y>
      <width>111</width>
-     <height>91</height>
+     <height>40</height>
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignmentFlag::AlignCenter</set>
+    <string>Like</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="addToPlaylistButton">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>510</y>
+     <width>131</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add to playlist</string>
+   </property>
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::ListAdd"/>
+   </property>
+  </widget>
+  <zorder>frame</zorder>
+  <zorder>sidebarFrame</zorder>
+  <zorder>label</zorder>
+  <zorder>artistsListWidget</zorder>
+  <zorder>songsTableWidget</zorder>
+  <zorder>searchLineEdit</zorder>
+  <zorder>genreComboBox</zorder>
+  <zorder>yearComboBox</zorder>
+  <zorder>sortComboBox</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>songsTitleLabel</zorder>
+  <zorder>likeButton</zorder>
+  <zorder>addToPlaylistButton</zorder>
  </widget>
  <resources/>
  <connections/>
