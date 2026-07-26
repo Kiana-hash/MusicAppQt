@@ -49,6 +49,8 @@ private slots:
 
     void on_songsTableWidget_cellDoubleClicked(int row,int column);
 
+    void on_artistSearchLineEdit_textChanged(const QString &arg1);
+
 private:
 
     void refreshDashboard();
@@ -58,6 +60,8 @@ private:
     void refreshSongs();
 
     void updateSongButtons();
+
+    void refreshArtists();
 
     vector<Song> getAllCatalogSongs() const;
 

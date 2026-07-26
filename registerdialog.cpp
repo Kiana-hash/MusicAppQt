@@ -3,6 +3,7 @@
 #include "authservice.h"
 #include <QMessageBox>
 #include <QFileDialog>
+#include "imageutils.h"
 
 RegisterDialog::RegisterDialog(AuthService& authService,QWidget *parent)
     : QDialog(parent)
@@ -71,5 +72,7 @@ void RegisterDialog::on_choosePhotoButton_clicked()
     }
 
     ui->profilePhotoLineEdit->setText(filePath);
+
+    ImageUtils::displayImage(ui->profilePhotoLabel,filePath);
 }
 

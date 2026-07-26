@@ -14,9 +14,7 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">/* =========================================
-   SHARED DARK SYNTHWAVE FOUNDATION
-   ========================================= */
+   <string notr="true">
 
 QWidget {
     color: #F7F5FF;

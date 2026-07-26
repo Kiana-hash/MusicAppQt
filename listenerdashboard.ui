@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>846</width>
-    <height>737</height>
+    <height>734</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -675,16 +675,50 @@ QToolTip {
     border-radius: 6px;
 
     padding: 5px;
+}
+
+QLineEdit#artistSearchLineEdit: {
+    color: #FFFFFF;
+
+    background-color: rgba(13, 15, 34, 230);
+
+    border: 1px solid #504873;
+    border-radius: 13px;
+
+    min-height: 34px;
+
+    padding-left: 13px;
+    padding-right: 13px;
+
+    font-size: 10pt;
+
+    selection-background-color: #8B5CF6;
+}
+
+
+QLineEdit#artistSearchLineEdit:hover {
+    border-color: #8068BE;
+}
+
+QLineEdit#artistSearchLineEdit::focus {
+    background-color: #141730;
+
+    border: 1px solid #27D7F2;
 }</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>200</x>
-     <y>550</y>
-     <width>51</width>
-     <height>20</height>
+     <y>560</y>
+     <width>71</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Artists:</string>
@@ -693,10 +727,10 @@ QToolTip {
   <widget class="QListWidget" name="artistsListWidget">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>580</y>
-     <width>491</width>
-     <height>141</height>
+     <x>200</x>
+     <y>600</y>
+     <width>631</width>
+     <height>101</height>
     </rect>
    </property>
    <property name="editTriggers">
@@ -774,7 +808,7 @@ QToolTip {
      <x>0</x>
      <y>0</y>
      <width>181</width>
-     <height>751</height>
+     <height>781</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -810,7 +844,7 @@ QToolTip {
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>680</y>
+      <y>670</y>
       <width>161</width>
       <height>41</height>
      </rect>
@@ -826,7 +860,7 @@ QToolTip {
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>610</y>
+      <y>620</y>
       <width>161</width>
       <height>41</height>
      </rect>
@@ -842,7 +876,7 @@ QToolTip {
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>540</y>
+      <y>570</y>
       <width>161</width>
       <height>41</height>
      </rect>
@@ -921,7 +955,7 @@ QToolTip {
     <rect>
      <x>290</x>
      <y>140</y>
-     <width>491</width>
+     <width>501</width>
      <height>36</height>
     </rect>
    </property>
@@ -964,7 +998,7 @@ QToolTip {
      <x>350</x>
      <y>510</y>
      <width>111</width>
-     <height>40</height>
+     <height>39</height>
     </rect>
    </property>
    <property name="text">
@@ -977,7 +1011,7 @@ QToolTip {
      <x>580</x>
      <y>510</y>
      <width>131</width>
-     <height>40</height>
+     <height>39</height>
     </rect>
    </property>
    <property name="text">
@@ -1029,6 +1063,65 @@ QToolTip {
     </item>
    </layout>
   </widget>
+  <widget class="QLineEdit" name="artistSearchLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>560</y>
+     <width>451</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit#artistSearchLineEdit {
+    color: #FFFFFF;
+    background-color: rgba(13, 15, 34, 230);
+
+    border: 1px solid #504873;
+    border-radius: 13px;
+
+    min-height: 34px;
+
+    padding-left: 13px;
+    padding-right: 13px;
+
+    font-size: 10pt;
+
+    selection-background-color: #8B5CF6;
+}
+
+QLineEdit#artistSearchLineEdit:hover {
+    border-color: #8068BE;
+}
+
+QLineEdit#artistSearchLineEdit:focus {
+    background-color: #141730;
+    border: 1px solid #27D7F2;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Search Songs. . . </string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>560</y>
+     <width>41</width>
+     <height>38</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::EditFind"/>
+   </property>
+  </widget>
   <zorder>frame</zorder>
   <zorder>sidebarFrame</zorder>
   <zorder>label</zorder>
@@ -1040,6 +1133,8 @@ QToolTip {
   <zorder>likeButton</zorder>
   <zorder>addToPlaylistButton</zorder>
   <zorder>horizontalLayoutWidget</zorder>
+  <zorder>artistSearchLineEdit</zorder>
+  <zorder>pushButton_2</zorder>
  </widget>
  <resources/>
  <connections/>

@@ -169,25 +169,7 @@ void ListenerDashboard::refreshDashboard()
 
     ImageUtils::displayImage(ui->profilePhotoLabel,QString::fromStdString(account->getProfilePhotoPath()));
 
-    ui->artistsListWidget->clear();
-
-    const vector<Account> artists =m_catalogService.getAllArtists();
-
-    for (const Account& artist : artists)
-    {
-        QListWidgetItem* item =new QListWidgetItem(QString::fromStdString(artist.getFullName()));
-
-        item->setData(Qt::UserRole,artist.getId());
-
-        const QString photoPath =QString::fromStdString(artist.getProfilePhotoPath());
-
-        if (!photoPath.isEmpty())
-        {
-            item->setIcon(QIcon(photoPath));
-        }
-
-        ui->artistsListWidget->addItem(item);
-    }
+    refreshArtists();
 
     ui->playlistsListWidget->clear();
 
@@ -301,6 +283,31 @@ void ListenerDashboard::refreshSongs()
         ui->songsTableWidget->setRowHeight(row,48);
     }
     updateSongButtons();
+}
+
+void ListenerDashboard::refreshArtists()
+{
+    vector<Account> artists =m_catalogService.getAllArtists();
+
+    artists =MusicQueryService::searchArtistsByName(artists,ui->artistSearchLineEdit->text().toStdString());
+
+    ui->artistsListWidget->clear();
+
+    for (const Account& artist : artists)
+    {
+        QListWidgetItem* item =new QListWidgetItem(QString::fromStdString(artist.getFullName()));
+
+        item->setData(Qt::UserRole,artist.getId());
+
+        const QString photoPath =QString::fromStdString(artist.getProfilePhotoPath());
+
+        if (!photoPath.isEmpty())
+        {
+            item->setIcon(QIcon(photoPath));
+        }
+
+        ui->artistsListWidget->addItem(item);
+    }
 }
 
 void ListenerDashboard::updateSongButtons()
@@ -492,3 +499,9 @@ void ListenerDashboard::on_logoutButton_clicked()
 {
     accept();
 }
+void ListenerDashboard::on_artistSearchLineEdit_textChanged(const QString &arg1)
+{
+
+    refreshArtists();
+}
+

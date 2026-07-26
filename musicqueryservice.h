@@ -28,6 +28,8 @@ public:
 
     static vector<Playlist> sortPlaylistsByName(vector<Playlist> playlists,bool ascending = true);
 
+    static vector<Account> searchArtistsByName(const vector<Account>& artists,const string& searchText);
+
 
 private:
 

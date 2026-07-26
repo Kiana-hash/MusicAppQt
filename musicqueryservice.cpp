@@ -208,3 +208,27 @@ vector<Playlist>  MusicQueryService::sortPlaylistsByName(vector<Playlist> playli
 
     return playlists;
 }
+
+vector<Account> MusicQueryService::searchArtistsByName(const vector<Account>& artists,const string& searchText)
+{
+    const string cleanedSearchText =toLower(trim(searchText));
+
+    if (cleanedSearchText.empty())
+    {
+        return artists;
+    }
+
+    vector<Account> result;
+
+    for (const Account& artist : artists)
+    {
+        const string artistName =toLower(artist.getFullName());
+
+        if (artistName.find(cleanedSearchText)!= string::npos)
+        {
+            result.push_back(artist);
+        }
+    }
+
+    return result;
+}
